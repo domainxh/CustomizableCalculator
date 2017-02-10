@@ -9,10 +9,13 @@
 import UIKit
 import AVFoundation
 
+typealias completion = (_ errorMessage: String?) -> ()
+
 class CalculatorVC: UIViewController {
 
     @IBOutlet weak var equationLabel: UITextView!
     @IBOutlet weak var solutionLabel: UILabel!
+    @IBOutlet weak var pinMessageLabel: UILabel!
     
     @IBOutlet weak var divison: UIButton!
     @IBOutlet weak var multiplication: UIButton!
@@ -22,6 +25,12 @@ class CalculatorVC: UIViewController {
     
     var finalSolution: Float! = 0
     var tempSolution: Float! = 0
+    var isPasswordSet = false
+    private var tempPassword: String!
+    private var _password: String!
+    var password: String {
+        return _password
+    }
     
     let numbers = [".","0","1","2","3","4","5","6","7","8","9", "S"]
     let numbersIncludeNegative = ["-",".","0","1","2","3","4","5","6","7","8","9", "S"] // first one is negative
@@ -34,6 +43,16 @@ class CalculatorVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if !isPasswordSet {
+            let ac = UIAlertController(title: "Instructions", message: "Select a pin and press the (-) button to continue.\n Once set up, you will use the (-) to unlock your secret vault", preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "test", style: .default, handler: nil))
+            present(ac, animated: true)
+            
+            equationLabel.isHidden = true
+            solutionLabel.isHidden = true
+            pinMessageLabel.isHidden = false
+        }
     }
     
     // Automatically scroll the textView
@@ -41,9 +60,23 @@ class CalculatorVC: UIViewController {
         let range = NSMakeRange(lastIndexInEquation(), 0)
         equationLabel.scrollRangeToVisible(range)
     }
+    
+    func errorHandling(error: String, onComplete: completion?) {
+        switch error {
+            case "weakPassword" : onComplete?("The password must be 4 characters long or more")
+            case "newPin": onComplete?("Select a pin and press the (-) button to continue.\n Once set up, you will use the (-) to unlock your secret vault")
+            default: onComplete?("There was a problem, error: \(error)")
+        }
+    }
 
     @IBAction func numberTapped(_ sender: UIButton) {
         AudioServicesPlaySystemSound(1104)
+        
+        if !isPasswordSet {
+            pinMessageLabel.isHidden = true
+            equationLabel.isHidden = false
+        }
+        
         if equationLabel.text != ""{
             if isEndOfEquationAnEqualSign() {
                 clearLabel()
@@ -69,6 +102,26 @@ class CalculatorVC: UIViewController {
     
     @IBAction func negativeTapped(_ sender: UIButton) {
         AudioServicesPlaySystemSound(1104)
+        
+        if !isPasswordSet && tempPassword != nil {
+            if equationLabel.text == tempPassword {
+                _password = tempPassword
+                isPasswordSet = true
+                tempPassword = ""
+                performSegue(withIdentifier: "toStorageVC", sender: nil)
+            } else {
+              // error handling
+            }
+            
+        } else if !isPasswordSet && equationLabel.text!.characters.count > 2 {
+            tempPassword = equationLabel.text
+            equationLabel.isHidden = true
+            pinMessageLabel.isHidden = false
+            pinMessageLabel.text = "Please confirm your pin"
+            equationLabel.text = ""
+            return
+        }
+    
         if equationLabel.text != ""{
             if isEndOfEquationAnEqualSign() {
                 clearLabel()

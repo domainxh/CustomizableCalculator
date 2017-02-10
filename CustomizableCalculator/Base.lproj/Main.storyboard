@@ -37,6 +37,19 @@
                                 <color key="textColor" red="0.31372549020000001" green="0.31372549020000001" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create a PIN for this device" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="mal-Ac-ydq">
+                                <rect key="frame" x="8" y="74" width="359" height="115"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="25"/>
+                                <color key="textColor" red="0.31372549020000001" green="0.31372549020000001" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OF3-Cs-ZYZ">
+                                <rect key="frame" x="0.0" y="189" width="375" height="1"/>
+                                <color key="backgroundColor" red="0.31372549019607843" green="0.31372549019607843" blue="0.31372549019607843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="0SN-nr-gMk"/>
+                                </constraints>
+                            </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="gVY-Da-f3g">
                                 <rect key="frame" x="0.0" y="190" width="375" height="477"/>
                                 <subviews>
@@ -286,27 +299,24 @@
                                     <constraint firstItem="V1f-Qq-29p" firstAttribute="leading" secondItem="gVY-Da-f3g" secondAttribute="leading" id="yVo-gr-kp2"/>
                                 </constraints>
                             </stackView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OF3-Cs-ZYZ">
-                                <rect key="frame" x="0.0" y="189" width="375" height="1"/>
-                                <color key="backgroundColor" red="0.31372549019607843" green="0.31372549019607843" blue="0.31372549019607843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="1" id="0SN-nr-gMk"/>
-                                </constraints>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="Zq5-bT-CfL" secondAttribute="trailing" constant="8" id="04B-PZ-azC"/>
+                            <constraint firstItem="OF3-Cs-ZYZ" firstAttribute="top" secondItem="mal-Ac-ydq" secondAttribute="bottom" id="2pg-cY-Rt6"/>
                             <constraint firstItem="OF3-Cs-ZYZ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="5yi-wK-iZ4"/>
                             <constraint firstItem="gVY-Da-f3g" firstAttribute="top" secondItem="OF3-Cs-ZYZ" secondAttribute="bottom" id="7jA-rv-LGg"/>
                             <constraint firstAttribute="trailing" secondItem="fwr-JF-8fN" secondAttribute="trailing" constant="8" id="AGb-9E-viO"/>
                             <constraint firstItem="fwr-JF-8fN" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="8" id="Daq-mD-01y"/>
                             <constraint firstItem="Zq5-bT-CfL" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="16" id="LLM-xx-V5H"/>
+                            <constraint firstAttribute="trailing" secondItem="mal-Ac-ydq" secondAttribute="trailing" constant="8" id="PKh-j6-7I4"/>
                             <constraint firstAttribute="trailing" secondItem="OF3-Cs-ZYZ" secondAttribute="trailing" id="QWC-3i-cvZ"/>
                             <constraint firstItem="fwr-JF-8fN" firstAttribute="top" secondItem="Zq5-bT-CfL" secondAttribute="bottom" id="YpQ-Ce-3Mc"/>
                             <constraint firstItem="gVY-Da-f3g" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="170" id="aF7-pV-PtF"/>
+                            <constraint firstItem="mal-Ac-ydq" firstAttribute="top" secondItem="Zq5-bT-CfL" secondAttribute="bottom" id="hQH-Sy-BwO"/>
                             <constraint firstItem="OF3-Cs-ZYZ" firstAttribute="top" secondItem="fwr-JF-8fN" secondAttribute="bottom" id="joc-dr-mnO"/>
                             <constraint firstItem="gVY-Da-f3g" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="nWD-8X-yPr"/>
+                            <constraint firstItem="mal-Ac-ydq" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="8" id="nbS-OG-kXS"/>
                             <constraint firstAttribute="trailing" secondItem="gVY-Da-f3g" secondAttribute="trailing" id="nvi-Fa-FHt"/>
                             <constraint firstItem="Zq5-bT-CfL" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="8" id="wng-8e-LXj"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="gVY-Da-f3g" secondAttribute="bottom" id="z0F-Dn-T31"/>
@@ -318,8 +328,10 @@
                         <outlet property="equal" destination="sTT-Te-jh8" id="UPa-fG-nHE"/>
                         <outlet property="equationLabel" destination="Zq5-bT-CfL" id="ZYb-QZ-c76"/>
                         <outlet property="multiplication" destination="1sk-jW-rp0" id="kQf-70-Dsn"/>
+                        <outlet property="pinMessageLabel" destination="mal-Ac-ydq" id="F9A-uZ-iFL"/>
                         <outlet property="solutionLabel" destination="fwr-JF-8fN" id="cUX-of-eC9"/>
                         <outlet property="subtraction" destination="P4R-fi-DpZ" id="KlC-YD-Bti"/>
+                        <segue destination="Vye-ll-nQQ" kind="show" identifier="toStorageVC" id="jry-q1-1Rp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -329,7 +341,65 @@
                     </connections>
                 </pongPressGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="136.80000000000001" y="138.98050974512745"/>
+            <point key="canvasLocation" x="-178" y="139"/>
+        </scene>
+        <!--StorageVC-->
+        <scene sceneID="b7V-BY-akp">
+            <objects>
+                <viewController id="Vye-ll-nQQ" customClass="StorageVC" customModule="CustomizableCalculator" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="YR0-Wy-Rqx"/>
+                        <viewControllerLayoutGuide type="bottom" id="0Q2-Bw-Nw2"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="M7G-Le-cAP">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="L94-kr-1gB">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="hJU-5I-RHT">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="3LY-CX-6nO">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nUj-Ji-fPa">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="0Ze-hO-pap"/>
+                                </constraints>
+                                <items>
+                                    <navigationItem title="Album" id="eO0-qE-mSq"/>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="nUj-Ji-fPa" secondAttribute="trailing" id="4WL-1R-Jdy"/>
+                            <constraint firstItem="0Q2-Bw-Nw2" firstAttribute="top" secondItem="L94-kr-1gB" secondAttribute="bottom" id="Ed1-zO-i4b"/>
+                            <constraint firstItem="nUj-Ji-fPa" firstAttribute="top" secondItem="YR0-Wy-Rqx" secondAttribute="bottom" id="GYH-6U-0tq"/>
+                            <constraint firstItem="nUj-Ji-fPa" firstAttribute="leading" secondItem="M7G-Le-cAP" secondAttribute="leading" id="b7g-qb-PW8"/>
+                            <constraint firstItem="L94-kr-1gB" firstAttribute="leading" secondItem="M7G-Le-cAP" secondAttribute="leading" id="cAp-CB-PMr"/>
+                            <constraint firstAttribute="trailing" secondItem="L94-kr-1gB" secondAttribute="trailing" id="fND-LH-G16"/>
+                            <constraint firstItem="L94-kr-1gB" firstAttribute="top" secondItem="nUj-Ji-fPa" secondAttribute="bottom" id="wWe-NF-vLt"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="U3D-fi-llU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="856.79999999999995" y="138.98050974512745"/>
         </scene>
     </scenes>
 </document>
