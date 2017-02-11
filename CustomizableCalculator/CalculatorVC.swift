@@ -22,15 +22,13 @@ class CalculatorVC: UIViewController {
     @IBOutlet weak var subtraction: UIButton!
     @IBOutlet weak var addition: UIButton!
     @IBOutlet weak var equal: UIButton!
+    @IBOutlet weak var negative: UIButton!
     
     var finalSolution: Float! = 0
     var tempSolution: Float! = 0
     var isPasswordSet = false
-    private var tempPassword: String!
-    private var _password: String!
-    var password: String {
-        return _password
-    }
+    var tempPassword = ""
+    var password = ""
     
     let numbers = [".","0","1","2","3","4","5","6","7","8","9", "S"]
     let numbersIncludeNegative = ["-",".","0","1","2","3","4","5","6","7","8","9", "S"] // first one is negative
@@ -45,13 +43,20 @@ class CalculatorVC: UIViewController {
         super.viewDidLoad()
         
         if !isPasswordSet {
-            let ac = UIAlertController(title: "Instructions", message: "Select a pin and press the (-) button to continue.\n Once set up, you will use the (-) to unlock your secret vault", preferredStyle: .alert)
-            ac.addAction(UIAlertAction(title: "test", style: .default, handler: nil))
-            present(ac, animated: true)
-            
-            equationLabel.isHidden = true
             solutionLabel.isHidden = true
             pinMessageLabel.isHidden = false
+            negative.layer.borderWidth = 3
+            negative.layer.borderColor = UIColor.orange.cgColor
+        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if !isPasswordSet {
+            let ac = UIAlertController(title: "Instructions", message: "Select a pin and press the (-) button to continue.\n \n Once set up, you will use the (-) to unlock your secret vault", preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(ac, animated: true, completion:nil)
         }
     }
     
@@ -60,21 +65,14 @@ class CalculatorVC: UIViewController {
         let range = NSMakeRange(lastIndexInEquation(), 0)
         equationLabel.scrollRangeToVisible(range)
     }
-    
-    func errorHandling(error: String, onComplete: completion?) {
-        switch error {
-            case "weakPassword" : onComplete?("The password must be 4 characters long or more")
-            case "newPin": onComplete?("Select a pin and press the (-) button to continue.\n Once set up, you will use the (-) to unlock your secret vault")
-            default: onComplete?("There was a problem, error: \(error)")
-        }
-    }
 
     @IBAction func numberTapped(_ sender: UIButton) {
         AudioServicesPlaySystemSound(1104)
         
         if !isPasswordSet {
-            pinMessageLabel.isHidden = true
-            equationLabel.isHidden = false
+            if sender.currentTitle == "." {
+                return
+            }
         }
         
         if equationLabel.text != ""{
@@ -102,26 +100,38 @@ class CalculatorVC: UIViewController {
     
     @IBAction func negativeTapped(_ sender: UIButton) {
         AudioServicesPlaySystemSound(1104)
+    
+        if password != "" && password == equationLabel.text {
+            performSegue(withIdentifier: "toStorageVC", sender: nil)
+        }
         
-        if !isPasswordSet && tempPassword != nil {
+        if !isPasswordSet && tempPassword != "" {
             if equationLabel.text == tempPassword {
-                _password = tempPassword
+                password = tempPassword
                 isPasswordSet = true
                 tempPassword = ""
+                solutionLabel.isHidden = false
+                pinMessageLabel.isHidden = true
                 performSegue(withIdentifier: "toStorageVC", sender: nil)
             } else {
-              // error handling
+                pinMessageLabel.text = "Mismatch. Reset password"
+                tempPassword = ""
+                equationLabel.text = ""
+                return
             }
-            
-        } else if !isPasswordSet && equationLabel.text!.characters.count > 2 {
-            tempPassword = equationLabel.text
-            equationLabel.isHidden = true
-            pinMessageLabel.isHidden = false
-            pinMessageLabel.text = "Please confirm your pin"
-            equationLabel.text = ""
-            return
+        } else if !isPasswordSet {
+            if equationLabel.text.characters.count < 4 {
+                pinMessageLabel.text = "Minimum 4 characters"
+                equationLabel.text = ""
+                return
+            } else {
+                tempPassword = equationLabel.text
+                equationLabel.text = ""
+                pinMessageLabel.text = "Confirm your pin"
+                return
+            }
         }
-    
+        
         if equationLabel.text != ""{
             if isEndOfEquationAnEqualSign() {
                 clearLabel()
@@ -137,6 +147,11 @@ class CalculatorVC: UIViewController {
     
     @IBAction func ANSTapped(_ sender: UIButton) {
         AudioServicesPlaySystemSound(1104)
+        
+        if !isPasswordSet {
+            return
+        }
+        
         if equationLabel.text != "" {
             if isEndOfEquationAnEqualSign() {
                 clearLabel()
@@ -151,6 +166,11 @@ class CalculatorVC: UIViewController {
     
     @IBAction func performOperator(_ sender: UIButton) {
         AudioServicesPlaySystemSound(1104)
+        
+        if !isPasswordSet {
+            return
+        }
+        
         if equationLabel.text != ""{
             if !isInputCharacterAnOperator(inputCharacter: lastCharacterInEquation(), listOfOperations: operatorsIncludeNegative) {
                 equationLabel.text! += sender.currentTitle!
@@ -164,6 +184,11 @@ class CalculatorVC: UIViewController {
     
     @IBAction func equalTapped(_ sender: UIButton) {
         AudioServicesPlaySystemSound(1104)
+        
+        if !isPasswordSet {
+            return
+        }
+        
         if equationLabel.text != "" {
             if isInputAnOperator(input: lastCharacterInEquation(), listOfOperations: operatorsIncludeNegative) {
                 return

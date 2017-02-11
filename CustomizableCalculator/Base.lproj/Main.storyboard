@@ -12,7 +12,7 @@
         <!--CalculatorVC-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="CalculatorVC" customModule="CustomizableCalculator" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="calculatorVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="CalculatorVC" customModule="CustomizableCalculator" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -31,7 +31,7 @@
                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="20"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fwr-JF-8fN">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="fwr-JF-8fN">
                                 <rect key="frame" x="8" y="74" width="359" height="115"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="50"/>
                                 <color key="textColor" red="0.31372549020000001" green="0.31372549020000001" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -328,6 +328,7 @@
                         <outlet property="equal" destination="sTT-Te-jh8" id="UPa-fG-nHE"/>
                         <outlet property="equationLabel" destination="Zq5-bT-CfL" id="ZYb-QZ-c76"/>
                         <outlet property="multiplication" destination="1sk-jW-rp0" id="kQf-70-Dsn"/>
+                        <outlet property="negative" destination="wl4-oJ-b2k" id="lJd-9O-jif"/>
                         <outlet property="pinMessageLabel" destination="mal-Ac-ydq" id="F9A-uZ-iFL"/>
                         <outlet property="solutionLabel" destination="fwr-JF-8fN" id="cUX-of-eC9"/>
                         <outlet property="subtraction" destination="P4R-fi-DpZ" id="KlC-YD-Bti"/>
