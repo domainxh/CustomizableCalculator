@@ -23,3 +23,14 @@ extension String {
     }
 }
 
+//extension UserDefaults {
+//    func setPassword(password: String) {
+//        set(password, forKey: "password")
+//        synchronize()
+//    }
+//    
+//    func isPasswordSet() -> Bool {
+//        return bool(forKey: "isPasswordSet")
+//    }
+//    
+//}

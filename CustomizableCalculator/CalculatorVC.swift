@@ -9,8 +9,6 @@
 import UIKit
 import AVFoundation
 
-typealias completion = (_ errorMessage: String?) -> ()
-
 class CalculatorVC: UIViewController {
 
     @IBOutlet weak var equationLabel: UITextView!
@@ -26,9 +24,12 @@ class CalculatorVC: UIViewController {
     
     var finalSolution: Float! = 0
     var tempSolution: Float! = 0
-    var isPasswordSet = false
     var tempPassword = ""
-    var password = ""
+    
+    let defaults = UserDefaults.standard
+    fileprivate func isPasswordSet() -> Bool {
+        return defaults.bool(forKey: "isPasswordSet")
+    }
     
     let numbers = [".","0","1","2","3","4","5","6","7","8","9", "S"]
     let numbersIncludeNegative = ["-",".","0","1","2","3","4","5","6","7","8","9", "S"] // first one is negative
@@ -42,7 +43,7 @@ class CalculatorVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if !isPasswordSet {
+        if !isPasswordSet() {
             solutionLabel.isHidden = true
             pinMessageLabel.isHidden = false
             negative.layer.borderWidth = 3
@@ -53,7 +54,7 @@ class CalculatorVC: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        if !isPasswordSet {
+        if !isPasswordSet() {
             let ac = UIAlertController(title: "Instructions", message: "Select a pin and press the (-) button to continue.\n \n Once set up, you will use the (-) to unlock your secret vault", preferredStyle: .alert)
             ac.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             self.present(ac, animated: true, completion:nil)
@@ -69,10 +70,8 @@ class CalculatorVC: UIViewController {
     @IBAction func numberTapped(_ sender: UIButton) {
         AudioServicesPlaySystemSound(1104)
         
-        if !isPasswordSet {
-            if sender.currentTitle == "." {
-                return
-            }
+        if !isPasswordSet() {
+            if sender.currentTitle == "." { return }
         }
         
         if equationLabel.text != ""{
@@ -100,15 +99,20 @@ class CalculatorVC: UIViewController {
     
     @IBAction func negativeTapped(_ sender: UIButton) {
         AudioServicesPlaySystemSound(1104)
-    
-        if password != "" && password == equationLabel.text {
-            performSegue(withIdentifier: "toStorageVC", sender: nil)
+        
+        if let password = defaults.string(forKey: "password") {
+            if equationLabel.text == password {
+                performSegue(withIdentifier: "toStorageVC", sender: nil)
+            }
         }
         
-        if !isPasswordSet && tempPassword != "" {
+        if !isPasswordSet() && tempPassword != "" {
             if equationLabel.text == tempPassword {
-                password = tempPassword
-                isPasswordSet = true
+                
+                defaults.set(tempPassword, forKey: "password")
+                defaults.set(true, forKey: "isPasswordSet")
+                defaults.synchronize()
+                
                 tempPassword = ""
                 solutionLabel.isHidden = false
                 pinMessageLabel.isHidden = true
@@ -119,9 +123,13 @@ class CalculatorVC: UIViewController {
                 equationLabel.text = ""
                 return
             }
-        } else if !isPasswordSet {
+        } else if !isPasswordSet() {
             if equationLabel.text.characters.count < 4 {
                 pinMessageLabel.text = "Minimum 4 characters"
+                equationLabel.text = ""
+                return
+            } else if equationLabel.text.characters.count > 8 {
+                pinMessageLabel.text = "Maximum 8 characters"
                 equationLabel.text = ""
                 return
             } else {
@@ -132,15 +140,14 @@ class CalculatorVC: UIViewController {
             }
         }
         
-        if equationLabel.text != ""{
+        if equationLabel.text != "" {
             if isEndOfEquationAnEqualSign() {
                 clearLabel()
                 equationLabel.text! += "-"
             } else if !isInputCharacterAnOperator(inputCharacter: lastCharacterInEquation(), listOfOperations: numbersIncludeNegative) {
                 equationLabel.text! += "-"
             }
-        }
-        else{
+        } else {
             equationLabel.text! += "-"
         }
     }
@@ -148,10 +155,7 @@ class CalculatorVC: UIViewController {
     @IBAction func ANSTapped(_ sender: UIButton) {
         AudioServicesPlaySystemSound(1104)
         
-        if !isPasswordSet {
-            return
-        }
-        
+        if !isPasswordSet() { return }
         if equationLabel.text != "" {
             if isEndOfEquationAnEqualSign() {
                 clearLabel()
@@ -167,10 +171,7 @@ class CalculatorVC: UIViewController {
     @IBAction func performOperator(_ sender: UIButton) {
         AudioServicesPlaySystemSound(1104)
         
-        if !isPasswordSet {
-            return
-        }
-        
+        if !isPasswordSet() { return }
         if equationLabel.text != ""{
             if !isInputCharacterAnOperator(inputCharacter: lastCharacterInEquation(), listOfOperations: operatorsIncludeNegative) {
                 equationLabel.text! += sender.currentTitle!
@@ -185,10 +186,7 @@ class CalculatorVC: UIViewController {
     @IBAction func equalTapped(_ sender: UIButton) {
         AudioServicesPlaySystemSound(1104)
         
-        if !isPasswordSet {
-            return
-        }
-        
+        if !isPasswordSet() { return }
         if equationLabel.text != "" {
             if isInputAnOperator(input: lastCharacterInEquation(), listOfOperations: operatorsIncludeNegative) {
                 return
