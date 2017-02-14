@@ -543,6 +543,35 @@
             </objects>
             <point key="canvasLocation" x="1556" y="138.98050974512745"/>
         </scene>
+        <!--Load MediaVC-->
+        <scene sceneID="a6W-rF-zQl">
+            <objects>
+                <viewController id="c3u-9P-vlx" customClass="loadMediaVC" customModule="CustomizableCalculator" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="vE6-zb-eWd"/>
+                        <viewControllerLayoutGuide type="bottom" id="2gC-3X-yvc"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="jYy-eK-KDW">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tdo-6F-p2Q">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="2gC-3X-yvc" firstAttribute="top" secondItem="tdo-6F-p2Q" secondAttribute="bottom" id="aV2-W3-zcK"/>
+                            <constraint firstItem="tdo-6F-p2Q" firstAttribute="leading" secondItem="jYy-eK-KDW" secondAttribute="leading" id="crb-hM-GWW"/>
+                            <constraint firstItem="tdo-6F-p2Q" firstAttribute="top" secondItem="vE6-zb-eWd" secondAttribute="bottom" id="z6t-f6-6H0"/>
+                            <constraint firstAttribute="trailing" secondItem="tdo-6F-p2Q" secondAttribute="trailing" id="zdm-or-T9U"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gYP-at-LhH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2328.8000000000002" y="138.98050974512745"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="PvW-1r-pxE">
             <objects>
