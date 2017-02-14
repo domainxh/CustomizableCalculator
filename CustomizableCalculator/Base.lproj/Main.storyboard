@@ -358,7 +358,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="b4P-1Q-aHN">
-                                <rect key="frame" x="16" y="80" width="343" height="587"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="pge-Kv-jV0">
                                     <size key="itemSize" width="100" height="100"/>
@@ -510,13 +510,13 @@
                         <constraints>
                             <constraint firstItem="0Q2-Bw-Nw2" firstAttribute="top" secondItem="b4P-1Q-aHN" secondAttribute="bottom" id="GVg-GX-MDo"/>
                             <constraint firstItem="OPP-1Y-bJ7" firstAttribute="top" secondItem="YR0-Wy-Rqx" secondAttribute="bottom" constant="-200" id="KR8-Qf-If9"/>
-                            <constraint firstItem="b4P-1Q-aHN" firstAttribute="leading" secondItem="M7G-Le-cAP" secondAttribute="leadingMargin" id="NAP-dE-3JO"/>
+                            <constraint firstItem="b4P-1Q-aHN" firstAttribute="leading" secondItem="M7G-Le-cAP" secondAttribute="leadingMargin" constant="-16" id="NAP-dE-3JO"/>
                             <constraint firstItem="QPR-0b-4ib" firstAttribute="top" secondItem="YR0-Wy-Rqx" secondAttribute="bottom" id="VFe-7F-cgr"/>
                             <constraint firstItem="QPR-0b-4ib" firstAttribute="leading" secondItem="M7G-Le-cAP" secondAttribute="leading" constant="-140" id="dyl-Fk-CrX"/>
                             <constraint firstAttribute="trailing" secondItem="OPP-1Y-bJ7" secondAttribute="trailing" id="ebT-X7-Ssz"/>
                             <constraint firstItem="0Q2-Bw-Nw2" firstAttribute="top" secondItem="QPR-0b-4ib" secondAttribute="bottom" id="ngx-O5-Hrw"/>
-                            <constraint firstItem="b4P-1Q-aHN" firstAttribute="top" secondItem="YR0-Wy-Rqx" secondAttribute="bottom" constant="16" id="xtg-RP-Iio"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="b4P-1Q-aHN" secondAttribute="trailing" id="xx2-7B-a4W"/>
+                            <constraint firstItem="b4P-1Q-aHN" firstAttribute="top" secondItem="YR0-Wy-Rqx" secondAttribute="bottom" id="xtg-RP-Iio"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="b4P-1Q-aHN" secondAttribute="trailing" constant="-16" id="xx2-7B-a4W"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Photo" id="vvo-QB-7R7">

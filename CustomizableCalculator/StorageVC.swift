@@ -8,7 +8,7 @@
 
 import UIKit
 
-class StorageVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource {
+class StorageVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
 
     // Note that your entire app’s Documents folder will be shared when you do this, including all folders you create in it. If you have data that you do not want your users to see you need to store them outside the Documents folder, or start those file names with a “full stop” (such as .testfile). This will hide the file and hence it won’t show up in iTunes.
     
@@ -18,6 +18,9 @@ class StorageVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
     @IBOutlet weak var addButtonTableView: UITableView!
     @IBOutlet weak var collectionView: UICollectionView!
 
+    fileprivate let itemsPerRow: CGFloat = 4
+    fileprivate let sectionInsets = UIEdgeInsets(top: 2.0, left: 2.0, bottom: 0.0, right: 2.0)
+    
     var isSlideMenuShowing = false
     var isAddMenuShowing = false
     let addButtonMenuItems = ["Camera", "Add file", "Add photo"]
@@ -149,9 +152,9 @@ class StorageVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
 //        
 //    }
 //    
-//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        <#code#>
-//    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        <#code#>
+    }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return photoList.count
@@ -165,7 +168,22 @@ class StorageVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 100, height: 100)
+        
+        let paddingSpace = (itemsPerRow + 1) * sectionInsets.left
+        let widthPerItem = (view.frame.width - paddingSpace) / itemsPerRow
+        return CGSize(width: widthPerItem, height: widthPerItem)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return sectionInsets
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return sectionInsets.left
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return sectionInsets.left
     }
     
 }
