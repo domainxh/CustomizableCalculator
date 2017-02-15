@@ -18,7 +18,7 @@ class StorageVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
     @IBOutlet weak var addButtonTableView: UITableView!
     @IBOutlet weak var collectionView: UICollectionView!
 
-    fileprivate let itemsPerRow: CGFloat = 4
+    fileprivate let itemsPerRow: CGFloat = 3
     fileprivate let sectionInsets = UIEdgeInsets(top: 2.0, left: 2.0, bottom: 0.0, right: 2.0)
     
     var isSlideMenuShowing = false
@@ -70,30 +70,6 @@ class StorageVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
             video.pathExtension.lowercased() == "mp4" ||
             video.pathExtension.lowercased() == "m4v" })
     }
-    
-    
-//        var filterArray = allFiles.map(){ $0.lastPathComponent }.filter(){ $0.pathExtension == "jpg" } as [String]
-        //        println("filter array \(allFiles[3])")
-//        var superURL: NSURL!
-//        for itemInFilterArray in filterArray {
-//            var direct = fileManager.URLsForDirectory(FileManager.SearchPathDirectory.DocumentDirectory, inDomains: FileManager.SearchPathDomainMask.UserDomainMask)
-//            if var url: NSURL = direct.first as? NSURL {
-//                superURL = url.appendingPathComponent(itemInFilterArray) as NSURL!
-//            }
-//            var playerItem = AVPlayerItem(URL: superURL)
-//            var equalazerString: String!
-//            var commonMetaData = playerItem.asset.commonMetadata as! [AVMetadataItem]
-//            for item in commonMetaData {
-//                if item.commonKey == "title" {
-//                    equalazerString = item.stringValue
-//                    if equalazerString == currentSongString {
-//                        localArrayNames.append(superURL)
-//                    } else {
-//                        //                        println("it is not equals")
-//                    }
-//                }
-//            }
-//        }
     
     @IBAction func addButtonTapped(_ sender: Any) {
         if isAddMenuShowing {
@@ -153,7 +129,10 @@ class StorageVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
 //    }
 //    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        <#code#>
+        if let vc = storyboard?.instantiateViewController(withIdentifier: "photoVC") as? PhotoVC {
+            vc.selectedImageURL = photoList[indexPath.row].path
+            navigationController?.pushViewController(vc, animated: true)
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

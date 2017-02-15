@@ -826,29 +826,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CustomizableCalculator/StorageVC.swift"
-            timestampString = "508805113.676547"
+            timestampString = "508816848.469898"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "203"
-            endingLineNumber = "203"
+            startingLineNumber = "181"
+            endingLineNumber = "181"
             landmarkName = "StorageVC"
             landmarkType = "3">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "CustomizableCalculator/StorageVC.swift"
-            timestampString = "508805113.676547"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "175"
-            endingLineNumber = "175"
-            landmarkName = "collectionView(_:layout:sizeForItemAt:)"
-            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

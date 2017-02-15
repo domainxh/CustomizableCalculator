@@ -22,7 +22,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Zq5-bT-CfL">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zq5-bT-CfL">
                                 <rect key="frame" x="8" y="16" width="359" height="58"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -521,11 +521,13 @@
                     </view>
                     <navigationItem key="navigationItem" title="Photo" id="vvo-QB-7R7">
                         <barButtonItem key="leftBarButtonItem" image="menubutton" id="xHt-O4-v5T">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="slideMenuTapped:" destination="Vye-ll-nQQ" id="G4u-Hi-RXB"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="6P5-Et-SWk">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="addButtonTapped:" destination="Vye-ll-nQQ" id="Iby-H3-pUf"/>
                             </connections>
@@ -543,10 +545,10 @@
             </objects>
             <point key="canvasLocation" x="1556" y="138.98050974512745"/>
         </scene>
-        <!--Load MediaVC-->
+        <!--PhotoVC-->
         <scene sceneID="a6W-rF-zQl">
             <objects>
-                <viewController id="c3u-9P-vlx" customClass="loadMediaVC" customModule="CustomizableCalculator" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="photoVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="c3u-9P-vlx" customClass="PhotoVC" customModule="CustomizableCalculator" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="vE6-zb-eWd"/>
                         <viewControllerLayoutGuide type="bottom" id="2gC-3X-yvc"/>
@@ -555,18 +557,35 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tdo-6F-p2Q">
+                            <scrollView multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bCI-0k-G04">
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
-                            </imageView>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tdo-6F-p2Q">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                                    </imageView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="tdo-6F-p2Q" firstAttribute="centerY" secondItem="bCI-0k-G04" secondAttribute="centerY" id="HSa-Ot-4gJ"/>
+                                    <constraint firstItem="tdo-6F-p2Q" firstAttribute="leading" secondItem="bCI-0k-G04" secondAttribute="leading" id="HlD-Me-8Ir"/>
+                                    <constraint firstItem="tdo-6F-p2Q" firstAttribute="top" secondItem="bCI-0k-G04" secondAttribute="top" id="UaS-ip-ecJ"/>
+                                    <constraint firstAttribute="trailing" secondItem="tdo-6F-p2Q" secondAttribute="trailing" id="axg-jq-bbn"/>
+                                    <constraint firstItem="tdo-6F-p2Q" firstAttribute="centerX" secondItem="bCI-0k-G04" secondAttribute="centerX" id="eV7-0K-Qsa"/>
+                                    <constraint firstAttribute="bottom" secondItem="tdo-6F-p2Q" secondAttribute="bottom" id="uCc-iU-bAp"/>
+                                </constraints>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="2gC-3X-yvc" firstAttribute="top" secondItem="tdo-6F-p2Q" secondAttribute="bottom" id="aV2-W3-zcK"/>
-                            <constraint firstItem="tdo-6F-p2Q" firstAttribute="leading" secondItem="jYy-eK-KDW" secondAttribute="leading" id="crb-hM-GWW"/>
-                            <constraint firstItem="tdo-6F-p2Q" firstAttribute="top" secondItem="vE6-zb-eWd" secondAttribute="bottom" id="z6t-f6-6H0"/>
-                            <constraint firstAttribute="trailing" secondItem="tdo-6F-p2Q" secondAttribute="trailing" id="zdm-or-T9U"/>
+                            <constraint firstItem="bCI-0k-G04" firstAttribute="bottom" secondItem="2gC-3X-yvc" secondAttribute="top" id="1Vx-oW-ep2"/>
+                            <constraint firstItem="bCI-0k-G04" firstAttribute="top" secondItem="vE6-zb-eWd" secondAttribute="bottom" id="DNy-b0-LDz"/>
+                            <constraint firstAttribute="trailing" secondItem="bCI-0k-G04" secondAttribute="trailing" id="Rh6-4c-Cin"/>
+                            <constraint firstItem="bCI-0k-G04" firstAttribute="leading" secondItem="jYy-eK-KDW" secondAttribute="leading" id="aIo-eM-hhD"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="imageView" destination="tdo-6F-p2Q" id="rL8-Kq-ESK"/>
+                        <outlet property="scrollView" destination="bCI-0k-G04" id="HDZ-Dh-Dte"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gYP-at-LhH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
