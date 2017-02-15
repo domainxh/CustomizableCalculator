@@ -810,11 +810,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CustomizableCalculator/StorageVC.swift"
-            timestampString = "508795683.535314"
+            timestampString = "508823732.757612"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "62"
-            endingLineNumber = "62"
+            startingLineNumber = "60"
+            endingLineNumber = "60"
             landmarkName = "allPhotosFromDirectory()"
             landmarkType = "7">
          </BreakpointContent>
@@ -826,13 +826,375 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CustomizableCalculator/StorageVC.swift"
-            timestampString = "508816848.469898"
+            timestampString = "508823732.757612"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "181"
-            endingLineNumber = "181"
+            startingLineNumber = "183"
+            endingLineNumber = "183"
             landmarkName = "StorageVC"
             landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CustomizableCalculator/PhotoVC.swift"
+            timestampString = "508820511.966806"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "17"
+            endingLineNumber = "17"
+            landmarkName = "PhotoVC"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CustomizableCalculator.PhotoVC.photoList.getter : Swift.Optional&lt;Swift.Array&lt;Foundation.URL&gt;&gt;"
+                  moduleName = "CustomizableCalculator"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Soja/Desktop/CustomizableCalculator/CustomizableCalculator/PhotoVC.swift"
+                  timestampString = "508823877.672977"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "17"
+                  endingLineNumber = "17"
+                  offsetFromSymbolStart = "56">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CustomizableCalculator.PhotoVC.photoList.setter : Swift.Optional&lt;Swift.Array&lt;Foundation.URL&gt;&gt;"
+                  moduleName = "CustomizableCalculator"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Soja/Desktop/CustomizableCalculator/CustomizableCalculator/PhotoVC.swift"
+                  timestampString = "508823877.67578"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "17"
+                  endingLineNumber = "17"
+                  offsetFromSymbolStart = "92">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CustomizableCalculator.PhotoVC.init (nibName : Swift.Optional&lt;Swift.String&gt;, bundle : Swift.Optional&lt;__ObjC.Bundle&gt;) -&gt; CustomizableCalculator.PhotoVC"
+                  moduleName = "CustomizableCalculator"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Soja/Desktop/CustomizableCalculator/CustomizableCalculator/PhotoVC.swift"
+                  timestampString = "508823877.678548"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "17"
+                  endingLineNumber = "17"
+                  offsetFromSymbolStart = "304">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CustomizableCalculator.PhotoVC.init (coder : __ObjC.NSCoder) -&gt; Swift.Optional&lt;CustomizableCalculator.PhotoVC&gt;"
+                  moduleName = "CustomizableCalculator"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Soja/Desktop/CustomizableCalculator/CustomizableCalculator/PhotoVC.swift"
+                  timestampString = "508823877.68118"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "17"
+                  endingLineNumber = "17"
+                  offsetFromSymbolStart = "240">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CustomizableCalculator/PhotoVC.swift"
+            timestampString = "508820512.327545"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "18"
+            endingLineNumber = "18"
+            landmarkName = "PhotoVC"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CustomizableCalculator.PhotoVC.currentIndex.getter : Swift.Optional&lt;Swift.Int&gt;"
+                  moduleName = "CustomizableCalculator"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Soja/Desktop/CustomizableCalculator/CustomizableCalculator/PhotoVC.swift"
+                  timestampString = "508823877.688174"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "18"
+                  endingLineNumber = "18"
+                  offsetFromSymbolStart = "24">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CustomizableCalculator.PhotoVC.currentIndex.setter : Swift.Optional&lt;Swift.Int&gt;"
+                  moduleName = "CustomizableCalculator"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Soja/Desktop/CustomizableCalculator/CustomizableCalculator/PhotoVC.swift"
+                  timestampString = "508823877.690934"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "18"
+                  endingLineNumber = "18"
+                  offsetFromSymbolStart = "48">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CustomizableCalculator.PhotoVC.init (nibName : Swift.Optional&lt;Swift.String&gt;, bundle : Swift.Optional&lt;__ObjC.Bundle&gt;) -&gt; CustomizableCalculator.PhotoVC"
+                  moduleName = "CustomizableCalculator"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Soja/Desktop/CustomizableCalculator/CustomizableCalculator/PhotoVC.swift"
+                  timestampString = "508823877.693312"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "18"
+                  endingLineNumber = "18"
+                  offsetFromSymbolStart = "344">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CustomizableCalculator.PhotoVC.init (coder : __ObjC.NSCoder) -&gt; Swift.Optional&lt;CustomizableCalculator.PhotoVC&gt;"
+                  moduleName = "CustomizableCalculator"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Soja/Desktop/CustomizableCalculator/CustomizableCalculator/PhotoVC.swift"
+                  timestampString = "508823877.69574"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "18"
+                  endingLineNumber = "18"
+                  offsetFromSymbolStart = "280">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CustomizableCalculator/ManagePhotoPageVC.swift"
+            timestampString = "508825009.949474"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
+            landmarkName = "viewPhotoCommentController(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CustomizableCalculator/PhotoVC.swift"
+            timestampString = "508823592.746528"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "25"
+            endingLineNumber = "25"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CustomizableCalculator/StorageVC.swift"
+            timestampString = "508823732.757612"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "133"
+            endingLineNumber = "133"
+            landmarkName = "collectionView(_:didSelectItemAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CustomizableCalculator/StorageVC.swift"
+            timestampString = "508823694.322767"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "132"
+            endingLineNumber = "132"
+            landmarkName = "collectionView(_:didSelectItemAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CustomizableCalculator/StorageVC.swift"
+            timestampString = "508823699.560014"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "136"
+            endingLineNumber = "136"
+            landmarkName = "collectionView(_:didSelectItemAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CustomizableCalculator/ManagePhotoPageVC.swift"
+            timestampString = "508823706.264038"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "14"
+            endingLineNumber = "14"
+            landmarkName = "ManagePhotoPageVC"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CustomizableCalculator.ManagePhotoPageVC.currentIndex.getter : Swift.Optional&lt;Swift.Int&gt;"
+                  moduleName = "CustomizableCalculator"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Soja/Desktop/CustomizableCalculator/CustomizableCalculator/ManagePhotoPageVC.swift"
+                  timestampString = "508823877.72506"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
+                  offsetFromSymbolStart = "24">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CustomizableCalculator.ManagePhotoPageVC.currentIndex.setter : Swift.Optional&lt;Swift.Int&gt;"
+                  moduleName = "CustomizableCalculator"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Soja/Desktop/CustomizableCalculator/CustomizableCalculator/ManagePhotoPageVC.swift"
+                  timestampString = "508823877.72746"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
+                  offsetFromSymbolStart = "48">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CustomizableCalculator.ManagePhotoPageVC.init (transitionStyle : __C.UIPageViewControllerTransitionStyle, navigationOrientation : __C.UIPageViewControllerNavigationOrientation, options : Swift.Optional&lt;Swift.Dictionary&lt;Swift.String, Any&gt;&gt;) -&gt; CustomizableCalculator.ManagePhotoPageVC"
+                  moduleName = "CustomizableCalculator"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Soja/Desktop/CustomizableCalculator/CustomizableCalculator/ManagePhotoPageVC.swift"
+                  timestampString = "508823877.729842"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
+                  offsetFromSymbolStart = "104">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CustomizableCalculator.ManagePhotoPageVC.init (coder : __ObjC.NSCoder) -&gt; Swift.Optional&lt;CustomizableCalculator.ManagePhotoPageVC&gt;"
+                  moduleName = "CustomizableCalculator"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Soja/Desktop/CustomizableCalculator/CustomizableCalculator/ManagePhotoPageVC.swift"
+                  timestampString = "508823877.732194"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
+                  offsetFromSymbolStart = "88">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CustomizableCalculator/ManagePhotoPageVC.swift"
+            timestampString = "508824010.648526"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "24"
+            endingLineNumber = "24"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CustomizableCalculator/ManagePhotoPageVC.swift"
+            timestampString = "508825009.949474"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
+            landmarkName = "pageViewController(_:viewControllerBefore:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CustomizableCalculator/ManagePhotoPageVC.swift"
+            timestampString = "508825009.949474"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
+            landmarkName = "pageViewController(_:viewControllerAfter:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

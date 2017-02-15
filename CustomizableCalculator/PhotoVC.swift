@@ -14,6 +14,8 @@ class PhotoVC: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var scrollView: UIScrollView!
     
     var selectedImageURL: String?
+    var photoList: [URL]?
+    var currentIndex: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,17 +28,11 @@ class PhotoVC: UIViewController, UIScrollViewDelegate {
         imageView.center = scrollView.center;
         
         scrollView.minimumZoomScale = 1
-        scrollView.maximumZoomScale = 3
+        scrollView.maximumZoomScale = 2
         
-        imageView.image = UIImage(contentsOfFile: selectedImageURL!)
-        
-        let swipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(swipe))
+        imageView.image = UIImage(contentsOfFile: photoList![currentIndex!].path)
     }
     
     func viewForZooming(in scrollView: UIScrollView) -> UIView? { return imageView }
-    
-    func swipe() {
-        
-    }
     
 }

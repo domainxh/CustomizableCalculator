@@ -539,6 +539,7 @@
                         <outlet property="collectionView" destination="b4P-1Q-aHN" id="GKV-Hd-PA8"/>
                         <outlet property="slideMenuLeadingConstraint" destination="dyl-Fk-CrX" id="IMb-Zu-HZN"/>
                         <outlet property="slideMenuTableView" destination="u3q-oh-CfS" id="9zN-jF-Axo"/>
+                        <segue destination="SBN-wP-Gsj" kind="show" identifier="showPhotoPage" id="kqK-OJ-ReE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U3D-fi-llU" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -589,7 +590,15 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gYP-at-LhH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2328.8000000000002" y="138.98050974512745"/>
+            <point key="canvasLocation" x="3255" y="139"/>
+        </scene>
+        <!--Manage Photo PageVC-->
+        <scene sceneID="zut-qy-bST">
+            <objects>
+                <pageViewController storyboardIdentifier="ManagePhotoPageVC" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" pageSpacing="30" navigationOrientation="horizontal" spineLocation="none" id="SBN-wP-Gsj" customClass="ManagePhotoPageVC" customModule="CustomizableCalculator" customModuleProvider="target" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="O6g-Ee-RNN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2422" y="139"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="PvW-1r-pxE">

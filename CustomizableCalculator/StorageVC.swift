@@ -9,8 +9,6 @@
 import UIKit
 
 class StorageVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
-
-    // Note that your entire app’s Documents folder will be shared when you do this, including all folders you create in it. If you have data that you do not want your users to see you need to store them outside the Documents folder, or start those file names with a “full stop” (such as .testfile). This will hide the file and hence it won’t show up in iTunes.
     
     @IBOutlet weak var slideMenuLeadingConstraint: NSLayoutConstraint!
     @IBOutlet weak var slideMenuTableView: UITableView!
@@ -25,8 +23,8 @@ class StorageVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
     var isAddMenuShowing = false
     let addButtonMenuItems = ["Camera", "Add file", "Add photo"]
     let slideMenuItems = ["Photo", "Video", "Web", "Setting"]
-    var photoList = [URL]()
-    var videoList = [String]()
+    fileprivate var photoList = [URL]()
+    fileprivate var videoList = [String]()
     
     private let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
     private var allFilesInDirectory: [URL] {
@@ -129,8 +127,12 @@ class StorageVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
 //    }
 //    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if let vc = storyboard?.instantiateViewController(withIdentifier: "photoVC") as? PhotoVC {
-            vc.selectedImageURL = photoList[indexPath.row].path
+        if let vc = storyboard?.instantiateViewController(withIdentifier: "ManagePhotoPageVC") as? ManagePhotoPageVC {
+            
+            vc.photoList = photoList
+            vc.currentIndex = indexPath.row
+//            vc.selectedImageURL = photoList[indexPath.row].path
+            
             navigationController?.pushViewController(vc, animated: true)
         }
     }
