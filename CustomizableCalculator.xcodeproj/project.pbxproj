@@ -11,7 +11,9 @@
 		F72065DF1E50A34600376F13 /* MediaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72065DE1E50A34600376F13 /* MediaCell.swift */; };
 		F72065E11E50A81900376F13 /* AddButtonMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72065E01E50A81900376F13 /* AddButtonMenuCell.swift */; };
 		F74361DF1E53C8BB007D41D1 /* PhotoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74361DE1E53C8BB007D41D1 /* PhotoVC.swift */; };
-		F74361E11E53FF90007D41D1 /* ManagePhotoPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74361E01E53FF90007D41D1 /* ManagePhotoPageVC.swift */; };
+		F74361E11E53FF90007D41D1 /* ManagePageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74361E01E53FF90007D41D1 /* ManagePageVC.swift */; };
+		F74361E31E540E30007D41D1 /* TodoList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74361E21E540E30007D41D1 /* TodoList.swift */; };
+		F74361E51E549AC3007D41D1 /* VideoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74361E41E549AC3007D41D1 /* VideoVC.swift */; };
 		F7D856E01E4B89B400D6DE35 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D856DF1E4B89B400D6DE35 /* AppDelegate.swift */; };
 		F7D856E21E4B89B400D6DE35 /* CalculatorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D856E11E4B89B400D6DE35 /* CalculatorVC.swift */; };
 		F7D856E51E4B89B400D6DE35 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7D856E31E4B89B400D6DE35 /* Main.storyboard */; };
@@ -27,8 +29,10 @@
 		F72065DE1E50A34600376F13 /* MediaCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaCell.swift; sourceTree = "<group>"; };
 		F72065E01E50A81900376F13 /* AddButtonMenuCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddButtonMenuCell.swift; sourceTree = "<group>"; };
 		F74361DE1E53C8BB007D41D1 /* PhotoVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoVC.swift; sourceTree = "<group>"; };
-		F74361E01E53FF90007D41D1 /* ManagePhotoPageVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagePhotoPageVC.swift; sourceTree = "<group>"; };
-		F7D856DC1E4B89B400D6DE35 /* CustomizableCalculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CustomizableCalculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F74361E01E53FF90007D41D1 /* ManagePageVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagePageVC.swift; sourceTree = "<group>"; };
+		F74361E21E540E30007D41D1 /* TodoList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoList.swift; sourceTree = "<group>"; };
+		F74361E41E549AC3007D41D1 /* VideoVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoVC.swift; sourceTree = "<group>"; };
+		F7D856DC1E4B89B400D6DE35 /* CustomizableCalculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = CustomizableCalculator.app; path = "/Users/Soja/Desktop/CustomizableCalculator/build/Debug-iphoneos/CustomizableCalculator.app"; sourceTree = "<absolute>"; };
 		F7D856DF1E4B89B400D6DE35 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F7D856E11E4B89B400D6DE35 /* CalculatorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorVC.swift; sourceTree = "<group>"; };
 		F7D856E41E4B89B400D6DE35 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -55,16 +59,7 @@
 			isa = PBXGroup;
 			children = (
 				F7D856DE1E4B89B400D6DE35 /* CustomizableCalculator */,
-				F7D856DD1E4B89B400D6DE35 /* Products */,
 			);
-			sourceTree = "<group>";
-		};
-		F7D856DD1E4B89B400D6DE35 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				F7D856DC1E4B89B400D6DE35 /* CustomizableCalculator.app */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		F7D856DE1E4B89B400D6DE35 /* CustomizableCalculator */ = {
@@ -106,8 +101,9 @@
 			children = (
 				F7D856E11E4B89B400D6DE35 /* CalculatorVC.swift */,
 				F7D857031E4D653B00D6DE35 /* StorageVC.swift */,
+				F74361E01E53FF90007D41D1 /* ManagePageVC.swift */,
 				F74361DE1E53C8BB007D41D1 /* PhotoVC.swift */,
-				F74361E01E53FF90007D41D1 /* ManagePhotoPageVC.swift */,
+				F74361E41E549AC3007D41D1 /* VideoVC.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -116,6 +112,7 @@
 			isa = PBXGroup;
 			children = (
 				F7D856FF1E4CFBE300D6DE35 /* Extensions.swift */,
+				F74361E21E540E30007D41D1 /* TodoList.swift */,
 			);
 			name = Resource;
 			sourceTree = "<group>";
@@ -127,9 +124,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F7D856F11E4B89B400D6DE35 /* Build configuration list for PBXNativeTarget "CustomizableCalculator" */;
 			buildPhases = (
+				E6A3F7432398ACCF2570D470 /* [CP] Check Pods Manifest.lock */,
 				F7D856D81E4B89B400D6DE35 /* Sources */,
 				F7D856D91E4B89B400D6DE35 /* Frameworks */,
 				F7D856DA1E4B89B400D6DE35 /* Resources */,
+				2244372DB2908566FD70A94A /* [CP] Embed Pods Frameworks */,
+				92A0249F44857BBB42490600 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -167,7 +167,7 @@
 				Base,
 			);
 			mainGroup = F7D856D31E4B89B400D6DE35;
-			productRefGroup = F7D856DD1E4B89B400D6DE35 /* Products */;
+			productRefGroup = F7D856D31E4B89B400D6DE35;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -189,17 +189,67 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		2244372DB2908566FD70A94A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CustomizableCalculator/Pods-CustomizableCalculator-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		92A0249F44857BBB42490600 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CustomizableCalculator/Pods-CustomizableCalculator-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E6A3F7432398ACCF2570D470 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		F7D856D81E4B89B400D6DE35 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F74361E51E549AC3007D41D1 /* VideoVC.swift in Sources */,
 				F7D857041E4D653B00D6DE35 /* StorageVC.swift in Sources */,
+				F74361E31E540E30007D41D1 /* TodoList.swift in Sources */,
 				F7D857001E4CFBE300D6DE35 /* Extensions.swift in Sources */,
 				F7D856E21E4B89B400D6DE35 /* CalculatorVC.swift in Sources */,
 				F74361DF1E53C8BB007D41D1 /* PhotoVC.swift in Sources */,
 				F7D856E01E4B89B400D6DE35 /* AppDelegate.swift in Sources */,
-				F74361E11E53FF90007D41D1 /* ManagePhotoPageVC.swift in Sources */,
+				F74361E11E53FF90007D41D1 /* ManagePageVC.swift in Sources */,
 				F72065E11E50A81900376F13 /* AddButtonMenuCell.swift in Sources */,
 				F72065DB1E5008CD00376F13 /* SlideMenuCell.swift in Sources */,
 				F7D856E81E4B89B400D6DE35 /* CustomizableCalculator.xcdatamodeld in Sources */,

@@ -13,7 +13,6 @@ class PhotoVC: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var scrollView: UIScrollView!
     
-    var selectedImageURL: String?
     var photoList: [URL]?
     var currentIndex: Int?
     

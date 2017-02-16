@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class StorageVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     
@@ -15,24 +16,28 @@ class StorageVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
     @IBOutlet weak var addButtonTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var addButtonTableView: UITableView!
     @IBOutlet weak var collectionView: UICollectionView!
-
-    fileprivate let itemsPerRow: CGFloat = 3
-    fileprivate let sectionInsets = UIEdgeInsets(top: 2.0, left: 2.0, bottom: 0.0, right: 2.0)
     
     var isSlideMenuShowing = false
     var isAddMenuShowing = false
     let addButtonMenuItems = ["Camera", "Add file", "Add photo"]
     let slideMenuItems = ["Photo", "Video", "Web", "Setting"]
-    fileprivate var photoList = [URL]()
-    fileprivate var videoList = [String]()
+    let mediaPerRow: CGFloat = 3
+    let sectionInsets = UIEdgeInsets(top: 2.0, left: 2.0, bottom: 0.0, right: 2.0)
     
-    private let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
-    private var allFilesInDirectory: [URL] {
+    private var _titleName: String?
+    var titleName: String? { set { _titleName = newValue } get { return _titleName } }
+    
+    fileprivate var photoList = [URL]()
+    fileprivate var videoList = [URL]()
+    fileprivate let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
+    fileprivate var allFilesInDirectory: [URL] {
         return try! FileManager.default.contentsOfDirectory(at: documentDirectory!, includingPropertiesForKeys: nil, options: .skipsHiddenFiles)
-
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        title = titleName
 
         slideMenuTableView.delegate = self
         slideMenuTableView.dataSource = self
@@ -48,7 +53,11 @@ class StorageVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
         navigationItem.leftBarButtonItem?.tintColor = UIColor.white
         navigationItem.rightBarButtonItem?.tintColor = UIColor.white
         
-        photoList = allPhotosFromDirectory()
+        if title == "Photo" {
+            photoList = allPhotosFromDirectory()
+        } else if title == "Video" {
+            videoList = allVideosFromDirectory()
+        }
         
     }
     
@@ -61,12 +70,15 @@ class StorageVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
             photo.pathExtension.lowercased() == "tiff" })
     }
 
-    fileprivate func allVideoFromDirectory() -> [URL] {
+    fileprivate func allVideosFromDirectory() -> [URL] {
         return allFilesInDirectory.filter({ video in
             video.pathExtension.lowercased() == "avi" ||
             video.pathExtension.lowercased() == "mov" ||
             video.pathExtension.lowercased() == "mp4" ||
-            video.pathExtension.lowercased() == "m4v" })
+            video.pathExtension.lowercased() == "m4v" ||
+            video.pathExtension.lowercased() == "vob" ||
+            video.pathExtension.lowercased() == "mpg" ||
+            video.pathExtension.lowercased() == "mpeg" })
     }
     
     @IBAction func addButtonTapped(_ sender: Any) {
@@ -120,6 +132,9 @@ class StorageVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
         } else {
             return addButtonMenuItems.count
         }
+        
+//        tableView == slideMenuTableView ? return slideMenuItems.count : return addButtonMenuItems.count
+        
     }
     
 //    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -127,31 +142,41 @@ class StorageVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
 //    }
 //    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if let vc = storyboard?.instantiateViewController(withIdentifier: "ManagePhotoPageVC") as? ManagePhotoPageVC {
-            
-            vc.photoList = photoList
+        
+        if let vc = storyboard?.instantiateViewController(withIdentifier: "managePageVC") as? ManagePageVC {
+            if title == "Photo" {
+                vc.photoList = photoList
+            } else if title == "Video" {
+                vc.videoList = videoList
+            }
             vc.currentIndex = indexPath.row
-//            vc.selectedImageURL = photoList[indexPath.row].path
-            
             navigationController?.pushViewController(vc, animated: true)
         }
+
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return photoList.count
+        if title == "Photo" {
+            return photoList.count
+        } else if title == "Video" {
+            return videoList.count
+        } else {
+            return 0
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "mediaCell", for: indexPath) as! MediaCell
-        cell.configureCell(URL: photoList[indexPath.row].path)
+        title == "Photo" ? cell.configPhotoCell(url: photoList[indexPath.row].path) : cell.configVideoCell(url: videoList[indexPath.row])
+        
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        let paddingSpace = (itemsPerRow + 1) * sectionInsets.left
-        let widthPerItem = (view.frame.width - paddingSpace) / itemsPerRow
+        let paddingSpace = (mediaPerRow + 1) * sectionInsets.left
+        let widthPerItem = (view.frame.width - paddingSpace) / mediaPerRow
         return CGSize(width: widthPerItem, height: widthPerItem)
     }
     

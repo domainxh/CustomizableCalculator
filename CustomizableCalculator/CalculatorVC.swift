@@ -27,9 +27,7 @@ class CalculatorVC: UIViewController {
     var tempPassword = ""
     
     let defaults = UserDefaults.standard
-    fileprivate func isPasswordSet() -> Bool {
-        return defaults.bool(forKey: "isPasswordSet")
-    }
+    fileprivate func isPasswordSet() -> Bool { return defaults.bool(forKey: "isPasswordSet") }
     
     let numbers = [".","0","1","2","3","4","5","6","7","8","9", "S"]
     let numbersIncludeNegative = ["-",".","0","1","2","3","4","5","6","7","8","9", "S"] // first one is negative
@@ -70,15 +68,8 @@ class CalculatorVC: UIViewController {
     @IBAction func numberTapped(_ sender: UIButton) {
         AudioServicesPlaySystemSound(1104)
         
-        if !isPasswordSet() {
-            if sender.currentTitle == "." { return }
-        }
-        
-        if equationLabel.text != ""{
-            if isEndOfEquationAnEqualSign() {
-                clearLabel()
-            }
-        }
+        if !isPasswordSet() && sender.currentTitle == "." { return }
+        if equationLabel.text != "" && isEndOfEquationAnEqualSign() { clearLabel() }
         equationLabel.text! += sender.currentTitle!
     }
     @IBAction func DELTapped(_ sender: UIButton) {
@@ -97,12 +88,22 @@ class CalculatorVC: UIViewController {
         equationLabel.text = ""
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destinationNC = segue.destination as? UINavigationController {
+            if let storageVC = destinationNC.viewControllers.first as? StorageVC {
+                if let titleName = sender as? String {
+                    storageVC.titleName = titleName
+                }
+            }
+        }
+    }
+    
     @IBAction func negativeTapped(_ sender: UIButton) {
         AudioServicesPlaySystemSound(1104)
         
         if let password = defaults.string(forKey: "password") {
             if equationLabel.text == password {
-                performSegue(withIdentifier: "toStorageVC", sender: nil)
+                performSegue(withIdentifier: "toStorageVC", sender: "Video")
             }
         }
         
@@ -322,6 +323,5 @@ class CalculatorVC: UIViewController {
     
     func lastIndexInEquation() -> Int { return equationLabel.text.characters.count - 1 }
     func lastCharacterInEquation() -> String { return equationLabel.text[lastIndexInEquation()] }
-    
 }
 
