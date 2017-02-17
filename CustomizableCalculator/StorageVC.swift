@@ -53,13 +53,14 @@ class StorageVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
         navigationItem.leftBarButtonItem?.tintColor = UIColor.white
         navigationItem.rightBarButtonItem?.tintColor = UIColor.white
         
+        
         if title == "Photo" {
             photoList = allPhotosFromDirectory()
         } else if title == "Video" {
             videoList = allVideosFromDirectory()
         }
-        
     }
+
     
     fileprivate func allPhotosFromDirectory() -> [URL] {
         return allFilesInDirectory.filter({ photo in
@@ -114,13 +115,13 @@ class StorageVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if tableView == slideMenuTableView {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "slideMenuCell") as! SlideMenuCell
-            cell.configureCell(itemName: slideMenuItems[indexPath.row])
+            let cell = tableView.dequeueReusableCell(withIdentifier: "mainMenuCell") as! MenuCell
+            cell.configCell(menuItems: slideMenuItems[indexPath.row])
             return cell
             
         } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "addButtonMenuCell") as! AddButtonMenuCell
-            cell.configureCell(itemName: addButtonMenuItems[indexPath.row])
+            let cell = tableView.dequeueReusableCell(withIdentifier: "addButtonMenuCell") as! MenuCell
+            cell.configCell(menuItems: addButtonMenuItems[indexPath.row])
             return cell
         }
     }
@@ -132,15 +133,31 @@ class StorageVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
         } else {
             return addButtonMenuItems.count
         }
-        
-        //        tableView == slideMenuTableView ? return slideMenuItems.count : return addButtonMenuItems.count
-        
     }
     
-    //    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    //
-    //    }
-    //
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let currentCell = tableView.cellForRow(at: indexPath) as! MenuCell
+        let cellText = currentCell.menuLabel.text
+        
+        if cellText == title {
+            return
+
+        } else if cellText == "Video" {
+            title = "Video"
+            collectionView.reloadData()
+        } else if cellText == "Photo" {
+            title = "Photo"
+            collectionView.reloadData()
+        }
+        
+        if isSlideMenuShowing {
+            toggleSlider(distance: -140, menuConstraint: slideMenuLeadingConstraint)
+            isSlideMenuShowing = !isSlideMenuShowing
+        }
+        
+    }
+
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         if let vc = storyboard?.instantiateViewController(withIdentifier: "managePageVC") as? ManagePageVC {
@@ -169,7 +186,6 @@ class StorageVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "mediaCell", for: indexPath) as! MediaCell
         title == "Photo" ? cell.configPhotoCell(url: photoList[indexPath.row].path) : cell.configVideoCell(url: videoList[indexPath.row])
-        
         return cell
     }
     

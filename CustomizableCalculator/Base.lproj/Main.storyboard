@@ -408,7 +408,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="140" height="603"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="slideMenuCell" rowHeight="60" id="OlS-XJ-dvB" customClass="SlideMenuCell" customModule="CustomizableCalculator" customModuleProvider="target">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="mainMenuCell" rowHeight="60" id="OlS-XJ-dvB" customClass="MenuCell" customModule="CustomizableCalculator" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="28" width="140" height="60"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="OlS-XJ-dvB" id="Zqw-Iv-yGY">
@@ -442,8 +442,8 @@
                                                 </tableViewCellContentView>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <connections>
-                                                    <outlet property="slideMenuIcon" destination="9jh-HF-V9I" id="FOb-Oc-oRU"/>
-                                                    <outlet property="slideMenuLabel" destination="eWy-Z9-x4a" id="afO-vj-PbS"/>
+                                                    <outlet property="menuImage" destination="9jh-HF-V9I" id="RPs-aD-ItF"/>
+                                                    <outlet property="menuLabel" destination="eWy-Z9-x4a" id="DAt-Q5-a6V"/>
                                                 </connections>
                                             </tableViewCell>
                                         </prototypes>
@@ -465,7 +465,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="160" height="200"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="addButtonMenuCell" rowHeight="80" id="Iqe-Cf-oE1" customClass="AddButtonMenuCell" customModule="CustomizableCalculator" customModuleProvider="target">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="addButtonMenuCell" rowHeight="80" id="Iqe-Cf-oE1" customClass="MenuCell" customModule="CustomizableCalculator" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="28" width="160" height="80"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Iqe-Cf-oE1" id="B7C-2m-sbk">
@@ -498,8 +498,8 @@
                                                     </constraints>
                                                 </tableViewCellContentView>
                                                 <connections>
-                                                    <outlet property="itemImage" destination="sGr-Ui-ZzF" id="F3c-kW-bBK"/>
-                                                    <outlet property="itemLabel" destination="gY3-m1-UDI" id="IOR-mR-aFf"/>
+                                                    <outlet property="menuImage" destination="sGr-Ui-ZzF" id="Rxt-98-1aT"/>
+                                                    <outlet property="menuLabel" destination="gY3-m1-UDI" id="2Aj-pJ-xWI"/>
                                                 </connections>
                                             </tableViewCell>
                                         </prototypes>
