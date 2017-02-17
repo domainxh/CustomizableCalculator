@@ -13,8 +13,9 @@ class PhotoVC: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var scrollView: UIScrollView!
     
-    var photoList: [URL]?
+    var mediaType: String?
     var currentIndex: Int?
+    let storageData = StorageData()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +30,7 @@ class PhotoVC: UIViewController, UIScrollViewDelegate {
         scrollView.minimumZoomScale = 1
         scrollView.maximumZoomScale = 2
         
-        imageView.image = UIImage(contentsOfFile: photoList![currentIndex!].path)
+        imageView.image = UIImage(contentsOfFile: storageData.photos[currentIndex!].path)
     }
     
     func viewForZooming(in scrollView: UIScrollView) -> UIView? { return imageView }

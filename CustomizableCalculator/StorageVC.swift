@@ -24,15 +24,10 @@ class StorageVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
     let mediaPerRow: CGFloat = 3
     let sectionInsets = UIEdgeInsets(top: 2.0, left: 2.0, bottom: 0.0, right: 2.0)
     
+    let storageData = StorageData()
+    
     private var _titleName: String?
     var titleName: String? { set { _titleName = newValue } get { return _titleName } }
-    
-    fileprivate var photoList = [URL]()
-    fileprivate var videoList = [URL]()
-    fileprivate let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
-    fileprivate var allFilesInDirectory: [URL] {
-        return try! FileManager.default.contentsOfDirectory(at: documentDirectory!, includingPropertiesForKeys: nil, options: .skipsHiddenFiles)
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,34 +47,6 @@ class StorageVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
         navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
         navigationItem.leftBarButtonItem?.tintColor = UIColor.white
         navigationItem.rightBarButtonItem?.tintColor = UIColor.white
-        
-        
-        if title == "Photo" {
-            photoList = allPhotosFromDirectory()
-        } else if title == "Video" {
-            videoList = allVideosFromDirectory()
-        }
-    }
-
-    
-    fileprivate func allPhotosFromDirectory() -> [URL] {
-        return allFilesInDirectory.filter({ photo in
-            photo.pathExtension.lowercased() == "jpg" ||
-                photo.pathExtension.lowercased() == "png" ||
-                photo.pathExtension.lowercased() == "gif" ||
-                photo.pathExtension.lowercased() == "jpeg" ||
-                photo.pathExtension.lowercased() == "tiff" })
-    }
-    
-    fileprivate func allVideosFromDirectory() -> [URL] {
-        return allFilesInDirectory.filter({ video in
-            video.pathExtension.lowercased() == "avi" ||
-                video.pathExtension.lowercased() == "mov" ||
-                video.pathExtension.lowercased() == "mp4" ||
-                video.pathExtension.lowercased() == "m4v" ||
-                video.pathExtension.lowercased() == "vob" ||
-                video.pathExtension.lowercased() == "mpg" ||
-                video.pathExtension.lowercased() == "mpeg" })
     }
     
     @IBAction func addButtonTapped(_ sender: Any) {
@@ -142,7 +109,6 @@ class StorageVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
         
         if cellText == title {
             return
-
         } else if cellText == "Video" {
             title = "Video"
             collectionView.reloadData()
@@ -161,22 +127,24 @@ class StorageVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         if let vc = storyboard?.instantiateViewController(withIdentifier: "managePageVC") as? ManagePageVC {
+            
             if title == "Photo" {
-                vc.photoList = photoList
+                vc.mediaType = "Photo"
             } else if title == "Video" {
-                vc.videoList = videoList
+                vc.mediaType = "Video"
             }
+
             vc.currentIndex = indexPath.row
             navigationController?.pushViewController(vc, animated: true)
         }
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+
         if title == "Photo" {
-            return photoList.count
+            return storageData.photos.count
         } else if title == "Video" {
-            return videoList.count
+            return storageData.videos.count
         } else {
             return 0
         }
@@ -185,7 +153,7 @@ class StorageVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "mediaCell", for: indexPath) as! MediaCell
-        title == "Photo" ? cell.configPhotoCell(url: photoList[indexPath.row].path) : cell.configVideoCell(url: videoList[indexPath.row])
+        title == "Photo" ? cell.configPhotoCell(url: storageData.photos[indexPath.row].path) : cell.configVideoCell(url: storageData.videos[indexPath.row])
         return cell
     }
     

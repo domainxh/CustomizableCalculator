@@ -110,8 +110,8 @@
 			children = (
 				F7D856E11E4B89B400D6DE35 /* CalculatorVC.swift */,
 				F7D857031E4D653B00D6DE35 /* StorageVC.swift */,
-				F74361DE1E53C8BB007D41D1 /* PhotoVC.swift */,
 				F74361E01E53FF90007D41D1 /* ManagePageVC.swift */,
+				F74361DE1E53C8BB007D41D1 /* PhotoVC.swift */,
 				F7C1896C1E55C3EF00F74743 /* VideoVC.swift */,
 			);
 			name = Controller;

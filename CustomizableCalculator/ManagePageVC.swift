@@ -10,9 +10,9 @@ import UIKit
 
 class ManagePageVC: UIPageViewController, UIPageViewControllerDataSource {
     
-    var photoList: [URL]?
-    var videoList: [URL]?
+    var mediaType: String!
     var currentIndex: Int?
+    let storageData = StorageData()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,18 +28,18 @@ class ManagePageVC: UIPageViewController, UIPageViewControllerDataSource {
     
     func viewMediaController(_ index: Int) -> UIViewController? {
         
-        if photoList != nil {
+        if mediaType == "Photo" {
             if let storyboard = storyboard,
                 let page = storyboard.instantiateViewController(withIdentifier: "photoVC") as? PhotoVC {
                 page.currentIndex = index
-                page.photoList = photoList
+                page.mediaType = "Photo"
                 return page
             }
         } else {
             if let storyboard = storyboard,
                 let page = storyboard.instantiateViewController(withIdentifier: "videoVC") as? VideoVC {
                 page.currentIndex = index
-                page.videoList = videoList
+                page.mediaType = "Video"
                 return page
             }
         }
@@ -48,7 +48,7 @@ class ManagePageVC: UIPageViewController, UIPageViewControllerDataSource {
     
     func pageViewController(_ pageViewController: UIPageViewController,
                             viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        if photoList != nil {
+        if mediaType == "Photo" {
             if let viewController = viewController as? PhotoVC {
                 var index = viewController.currentIndex
                 guard index != NSNotFound && index != 0 else { return nil }
@@ -68,12 +68,12 @@ class ManagePageVC: UIPageViewController, UIPageViewControllerDataSource {
     
     func pageViewController(_ pageViewController: UIPageViewController,
                             viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        if photoList != nil {
+        if mediaType == "Photo" {
             if let viewController = viewController as? PhotoVC {
                 var index = viewController.currentIndex
                 guard index != NSNotFound else { return nil }
                 index! += 1
-                guard index != photoList?.count else {return nil}
+                guard index != storageData.photos.count else {return nil}
                 return viewMediaController(index!)
             }
         } else {
@@ -81,12 +81,11 @@ class ManagePageVC: UIPageViewController, UIPageViewControllerDataSource {
                 var index = viewController.currentIndex
                 guard index != NSNotFound else { return nil }
                 index! += 1
-                guard index != videoList?.count else {return nil}
+                guard index != storageData.videos.count else {return nil}
                 
                 return viewMediaController(index!)
             }
         }
         return nil
     }
-    
 }

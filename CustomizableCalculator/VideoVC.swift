@@ -12,7 +12,8 @@ import AVKit
 
 class VideoVC: UIViewController {
 
-    var videoList: [URL]!
+    let storageData = StorageData()
+    var mediaType: String?
     var currentIndex: Int!
     var player: AVPlayer!
     
@@ -21,7 +22,7 @@ class VideoVC: UIViewController {
         
         navigationController?.navigationBar.tintColor = UIColor.white
         
-        player = AVPlayer(url: videoList[currentIndex])
+        player = AVPlayer(url: storageData.videos[currentIndex])
         let av = AVPlayerViewController()
         av.player = player
         av.view.frame = self.view.frame

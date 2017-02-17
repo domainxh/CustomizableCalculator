@@ -103,7 +103,7 @@ class CalculatorVC: UIViewController {
         
         if let password = defaults.string(forKey: "password") {
             if equationLabel.text == password {
-                performSegue(withIdentifier: "toStorageVC", sender: "Video")
+                performSegue(withIdentifier: "toStorageVC", sender: "Photo")
             }
         }
         
