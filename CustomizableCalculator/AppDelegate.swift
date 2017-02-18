@@ -28,7 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let calculatorVC = mainStoryBoard.instantiateViewController(withIdentifier: "calculatorVC") as! CalculatorVC
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         appDelegate.window?.rootViewController = calculatorVC
-        
+    
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {

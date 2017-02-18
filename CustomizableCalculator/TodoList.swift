@@ -19,7 +19,7 @@
 // Add sort functionality to photo video for size/date/video duration/
 // Instead of using ANS, store a value
 // Show operation in the display window then shift to the calculation window. Use that as a history window
-
+// When main menu or add button menu is shown, if tap somewhere else... it should just hide the menu.
 
 
 

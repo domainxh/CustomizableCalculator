@@ -16,13 +16,16 @@ class StorageVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
     @IBOutlet weak var addMenuConstraint: NSLayoutConstraint!
     @IBOutlet weak var addMenuTableView: UITableView!
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var mainMenuView: UIView!
     
     var isMainMenuShowing = false
     var isAddMenuShowing = false
     let addMenuItems = ["Camera", "Add file", "Add photo"]
     let mainMenuItems = ["Photo", "Video", "Web", "Setting"]
-    let mediaPerRow: CGFloat = 3
-    let sectionInsets = UIEdgeInsets(top: 2.0, left: 2.0, bottom: 0.0, right: 2.0)
+    
+    let mediaPerRow: CGFloat = 2
+    let cellGap = CGFloat(2)
+    let sectionInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: 0.0, right: 0.0)
     
     let storageData = StorageData()
     
@@ -43,7 +46,8 @@ class StorageVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
         collectionView.delegate = self
         collectionView.dataSource = self
         
-        UINavigationBar.appearance().barTintColor = UIColor.darkGray
+        UINavigationBar.appearance().barTintColor = UIColor(red: 24, green: 24, blue: 24) // Hexcolor 242424
+        UINavigationBar.appearance().backgroundColor = UIColor(red: 24, green: 24, blue: 24)
         navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
         navigationItem.leftBarButtonItem?.tintColor = UIColor.white
         navigationItem.rightBarButtonItem?.tintColor = UIColor.white
@@ -55,19 +59,8 @@ class StorageVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
         let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(self.handleSwipeGesture))
         swipeLeft.direction = UISwipeGestureRecognizerDirection.left
         self.view.addGestureRecognizer(swipeLeft)
-
-//        let tapGesture = UIGestureRecognizer(target: self, action: #selector(handleTapGesture))
-//        let singleTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(MyTapMethod))
-//        singleTapGestureRecognizer.numberOfTapsRequired = 1
-//        singleTapGestureRecognizer.isEnabled = true
-//        singleTapGestureRecognizer.cancelsTouchesInView = false
-//        scrollView.addGestureRecognizer(singleTapGestureRecognizer)
         
     }
-    
-    //    func handleTapGesture() {
-    //
-    //    }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
@@ -161,15 +154,21 @@ class StorageVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
             return
         } else if cellText == "Video" {
             title = "Video"
-            collectionView.reloadData()
         } else if cellText == "Photo" {
             title = "Photo"
-            collectionView.reloadData()
         }
         hideMainMenu()
+        collectionView.reloadData()
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        if isAddMenuShowing || isMainMenuShowing {
+            hideAddMenu()
+            hideMainMenu()
+            return
+        }
+        
         if let vc = storyboard?.instantiateViewController(withIdentifier: "managePageVC") as? ManagePageVC {
             vc.mediaType = title
             vc.currentIndex = indexPath.row
@@ -193,7 +192,7 @@ class StorageVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let paddingSpace = (mediaPerRow + 1) * sectionInsets.left
+        let paddingSpace = (mediaPerRow - 1) * cellGap
         let widthPerItem = (view.frame.width - paddingSpace) / mediaPerRow
         return CGSize(width: widthPerItem, height: widthPerItem)
     }
@@ -203,11 +202,12 @@ class StorageVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return sectionInsets.left
+        return cellGap
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return sectionInsets.left
+        return cellGap
     }
+    
     
 }
