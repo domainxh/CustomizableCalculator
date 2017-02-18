@@ -465,7 +465,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="160" height="200"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="addButtonMenuCell" rowHeight="80" id="Iqe-Cf-oE1" customClass="MenuCell" customModule="CustomizableCalculator" customModuleProvider="target">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="addMenuCell" rowHeight="80" id="Iqe-Cf-oE1" customClass="MenuCell" customModule="CustomizableCalculator" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="28" width="160" height="80"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Iqe-Cf-oE1" id="B7C-2m-sbk">
@@ -533,22 +533,22 @@
                         <barButtonItem key="leftBarButtonItem" image="menubutton" id="xHt-O4-v5T">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
-                                <action selector="slideMenuTapped:" destination="Vye-ll-nQQ" id="G4u-Hi-RXB"/>
+                                <action selector="mainMenuTapped:" destination="Vye-ll-nQQ" id="wSU-ou-krO"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="6P5-Et-SWk">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
-                                <action selector="addButtonTapped:" destination="Vye-ll-nQQ" id="Iby-H3-pUf"/>
+                                <action selector="addMenuTapped:" destination="Vye-ll-nQQ" id="ogB-Qi-ahN"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="addButtonTableView" destination="zRU-nS-SLk" id="VEL-46-zYn"/>
-                        <outlet property="addButtonTopConstraint" destination="KR8-Qf-If9" id="FTv-dd-9MU"/>
+                        <outlet property="addMenuConstraint" destination="KR8-Qf-If9" id="wIZ-Yh-1lv"/>
+                        <outlet property="addMenuTableView" destination="zRU-nS-SLk" id="gan-G5-SDg"/>
                         <outlet property="collectionView" destination="b4P-1Q-aHN" id="GKV-Hd-PA8"/>
-                        <outlet property="slideMenuLeadingConstraint" destination="dyl-Fk-CrX" id="IMb-Zu-HZN"/>
-                        <outlet property="slideMenuTableView" destination="u3q-oh-CfS" id="9zN-jF-Axo"/>
+                        <outlet property="mainMenuConstraint" destination="dyl-Fk-CrX" id="rZe-Mt-hLg"/>
+                        <outlet property="mainMenuTableView" destination="u3q-oh-CfS" id="Jfp-08-oca"/>
                         <segue destination="SBN-wP-Gsj" kind="show" identifier="showPage" id="kqK-OJ-ReE"/>
                     </connections>
                 </viewController>

@@ -11,16 +11,16 @@ import AVFoundation
 
 class StorageVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     
-    @IBOutlet weak var slideMenuLeadingConstraint: NSLayoutConstraint!
-    @IBOutlet weak var slideMenuTableView: UITableView!
-    @IBOutlet weak var addButtonTopConstraint: NSLayoutConstraint!
-    @IBOutlet weak var addButtonTableView: UITableView!
+    @IBOutlet weak var mainMenuConstraint: NSLayoutConstraint!
+    @IBOutlet weak var mainMenuTableView: UITableView!
+    @IBOutlet weak var addMenuConstraint: NSLayoutConstraint!
+    @IBOutlet weak var addMenuTableView: UITableView!
     @IBOutlet weak var collectionView: UICollectionView!
     
-    var isSlideMenuShowing = false
+    var isMainMenuShowing = false
     var isAddMenuShowing = false
-    let addButtonMenuItems = ["Camera", "Add file", "Add photo"]
-    let slideMenuItems = ["Photo", "Video", "Web", "Setting"]
+    let addMenuItems = ["Camera", "Add file", "Add photo"]
+    let mainMenuItems = ["Photo", "Video", "Web", "Setting"]
     let mediaPerRow: CGFloat = 3
     let sectionInsets = UIEdgeInsets(top: 2.0, left: 2.0, bottom: 0.0, right: 2.0)
     
@@ -34,11 +34,11 @@ class StorageVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
         
         title = titleName
         
-        slideMenuTableView.delegate = self
-        slideMenuTableView.dataSource = self
+        mainMenuTableView.delegate = self
+        mainMenuTableView.dataSource = self
         
-        addButtonTableView.delegate = self
-        addButtonTableView.dataSource = self
+        addMenuTableView.delegate = self
+        addMenuTableView.dataSource = self
         
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -47,31 +47,82 @@ class StorageVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
         navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
         navigationItem.leftBarButtonItem?.tintColor = UIColor.white
         navigationItem.rightBarButtonItem?.tintColor = UIColor.white
+        
+        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(self.handleSwipeGesture))
+        swipeRight.direction = UISwipeGestureRecognizerDirection.right
+        self.view.addGestureRecognizer(swipeRight)
+        
+        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(self.handleSwipeGesture))
+        swipeLeft.direction = UISwipeGestureRecognizerDirection.left
+        self.view.addGestureRecognizer(swipeLeft)
+
+//        let tapGesture = UIGestureRecognizer(target: self, action: #selector(handleTapGesture))
+//        let singleTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(MyTapMethod))
+//        singleTapGestureRecognizer.numberOfTapsRequired = 1
+//        singleTapGestureRecognizer.isEnabled = true
+//        singleTapGestureRecognizer.cancelsTouchesInView = false
+//        scrollView.addGestureRecognizer(singleTapGestureRecognizer)
+        
     }
     
-    @IBAction func addButtonTapped(_ sender: Any) {
-        if isAddMenuShowing {
-            toggleSlider(distance: -200, menuConstraint: addButtonTopConstraint)
-        } else {
-            toggleSlider(distance: 0, menuConstraint: addButtonTopConstraint)
-        }
-        isAddMenuShowing = !isAddMenuShowing
-        if isSlideMenuShowing {
-            toggleSlider(distance: -140, menuConstraint: slideMenuLeadingConstraint)
-            isSlideMenuShowing = !isSlideMenuShowing
+    //    func handleTapGesture() {
+    //
+    //    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        hideMainMenu()
+        hideAddMenu()
+    }
+    
+    func handleSwipeGesture(gesture: UIGestureRecognizer) {
+        if let swipeGesture = gesture as? UISwipeGestureRecognizer {
+            switch swipeGesture.direction {
+            case UISwipeGestureRecognizerDirection.right:
+                showMainMenu()
+            case UISwipeGestureRecognizerDirection.left:
+                hideMainMenu()
+            default:
+                break
+            }
         }
     }
     
-    @IBAction func slideMenuTapped(_ sender: Any) {
-        if isSlideMenuShowing {
-            toggleSlider(distance: -140, menuConstraint: slideMenuLeadingConstraint)
-        } else {
-            toggleSlider(distance: 0, menuConstraint: slideMenuLeadingConstraint)
-        }
-        isSlideMenuShowing = !isSlideMenuShowing
+    @IBAction func addMenuTapped(_ sender: Any) {
+        isAddMenuShowing ? hideAddMenu() : showAddMenu()
+        hideMainMenu()
+    }
+
+    @IBAction func mainMenuTapped(_ sender: Any) {
+        isMainMenuShowing ? hideMainMenu() : showMainMenu()
+        hideAddMenu()
+    }
+    
+    func hideAddMenu() {
         if isAddMenuShowing {
-            toggleSlider(distance: -200, menuConstraint: addButtonTopConstraint)
+            toggleSlider(distance: -200, menuConstraint: addMenuConstraint)
             isAddMenuShowing = !isAddMenuShowing
+        }
+    }
+    
+    func showAddMenu() {
+        if !isAddMenuShowing {
+            toggleSlider(distance: 0, menuConstraint: addMenuConstraint)
+            isAddMenuShowing = !isAddMenuShowing
+        }
+    }
+    
+    func hideMainMenu() {
+        if isMainMenuShowing {
+            toggleSlider(distance: -140, menuConstraint: mainMenuConstraint)
+            isMainMenuShowing = !isMainMenuShowing
+        }
+    }
+    
+    func showMainMenu() {
+        if !isMainMenuShowing {
+            toggleSlider(distance: 0, menuConstraint: mainMenuConstraint)
+            isMainMenuShowing = !isMainMenuShowing
         }
     }
     
@@ -81,33 +132,32 @@ class StorageVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if tableView == slideMenuTableView {
+        if tableView == mainMenuTableView {
             let cell = tableView.dequeueReusableCell(withIdentifier: "mainMenuCell") as! MenuCell
-            cell.configCell(menuItems: slideMenuItems[indexPath.row])
+            cell.configCell(menuItems: mainMenuItems[indexPath.row])
             return cell
             
         } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "addButtonMenuCell") as! MenuCell
-            cell.configCell(menuItems: addButtonMenuItems[indexPath.row])
+            let cell = tableView.dequeueReusableCell(withIdentifier: "addMenuCell") as! MenuCell
+            cell.configCell(menuItems: addMenuItems[indexPath.row])
             return cell
         }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        if tableView == slideMenuTableView {
-            return slideMenuItems.count
+        if tableView == mainMenuTableView {
+            return mainMenuItems.count
         } else {
-            return addButtonMenuItems.count
+            return addMenuItems.count
         }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
         let currentCell = tableView.cellForRow(at: indexPath) as! MenuCell
         let cellText = currentCell.menuLabel.text
         
         if cellText == title {
+            hideMainMenu()
             return
         } else if cellText == "Video" {
             title = "Video"
@@ -116,49 +166,33 @@ class StorageVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
             title = "Photo"
             collectionView.reloadData()
         }
-        
-        if isSlideMenuShowing {
-            toggleSlider(distance: -140, menuConstraint: slideMenuLeadingConstraint)
-            isSlideMenuShowing = !isSlideMenuShowing
-        }
-        
+        hideMainMenu()
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
         if let vc = storyboard?.instantiateViewController(withIdentifier: "managePageVC") as? ManagePageVC {
-            
-            if title == "Photo" {
-                vc.mediaType = "Photo"
-            } else if title == "Video" {
-                vc.mediaType = "Video"
-            }
-
+            vc.mediaType = title
             vc.currentIndex = indexPath.row
             navigationController?.pushViewController(vc, animated: true)
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-
         if title == "Photo" {
             return storageData.photos.count
         } else if title == "Video" {
             return storageData.videos.count
-        } else {
-            return 0
         }
+        return 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "mediaCell", for: indexPath) as! MediaCell
         title == "Photo" ? cell.configPhotoCell(url: storageData.photos[indexPath.row].path) : cell.configVideoCell(url: storageData.videos[indexPath.row])
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
         let paddingSpace = (mediaPerRow + 1) * sectionInsets.left
         let widthPerItem = (view.frame.width - paddingSpace) / mediaPerRow
         return CGSize(width: widthPerItem, height: widthPerItem)

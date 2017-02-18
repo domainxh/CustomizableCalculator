@@ -32,8 +32,10 @@ class MediaCell: UICollectionViewCell {
             
         } catch let error {
             print("*** Error generating thumbnail: \(error.localizedDescription)")
+            cellImage.image = UIImage(named: "play")
+            cellImage.contentMode = .center
         }
-        
+        videoDurationLabel.isHidden = false
         videoDurationLabel.text = getMediaDuration(url: url as NSURL!)
     }
     

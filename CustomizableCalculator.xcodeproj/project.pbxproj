@@ -91,7 +91,6 @@
 		F7D856F91E4CC02D00D6DE35 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				F758F2401E5792820059030C /* StorageData.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -120,8 +119,9 @@
 		F7D856FE1E4CC0C500D6DE35 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
-				F7D856FF1E4CFBE300D6DE35 /* Extensions.swift */,
 				F7C1896A1E55C25E00F74743 /* TodoList.swift */,
+				F7D856FF1E4CFBE300D6DE35 /* Extensions.swift */,
+				F758F2401E5792820059030C /* StorageData.swift */,
 			);
 			name = Resource;
 			sourceTree = "<group>";
