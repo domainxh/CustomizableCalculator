@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		F72065DF1E50A34600376F13 /* MediaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72065DE1E50A34600376F13 /* MediaCell.swift */; };
 		F721CDF21E5917C300DA0D3C /* SettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F721CDF11E5917C300DA0D3C /* SettingCell.swift */; };
+		F721CDF51E59357600DA0D3C /* SettingBlackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F721CDF41E59357600DA0D3C /* SettingBlackView.swift */; };
 		F74361DF1E53C8BB007D41D1 /* PhotoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74361DE1E53C8BB007D41D1 /* PhotoVC.swift */; };
 		F74361E11E53FF90007D41D1 /* ManagePageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74361E01E53FF90007D41D1 /* ManagePageVC.swift */; };
 		F758F23F1E5786060059030C /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F758F23E1E5786060059030C /* MenuCell.swift */; };
@@ -29,6 +30,7 @@
 /* Begin PBXFileReference section */
 		F72065DE1E50A34600376F13 /* MediaCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaCell.swift; sourceTree = "<group>"; };
 		F721CDF11E5917C300DA0D3C /* SettingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingCell.swift; sourceTree = "<group>"; };
+		F721CDF41E59357600DA0D3C /* SettingBlackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingBlackView.swift; sourceTree = "<group>"; };
 		F74361DE1E53C8BB007D41D1 /* PhotoVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoVC.swift; sourceTree = "<group>"; };
 		F74361E01E53FF90007D41D1 /* ManagePageVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagePageVC.swift; sourceTree = "<group>"; };
 		F758F23E1E5786060059030C /* MenuCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
@@ -59,6 +61,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F721CDF31E59344600DA0D3C /* Reference */ = {
+			isa = PBXGroup;
+			children = (
+				F721CDF11E5917C300DA0D3C /* SettingCell.swift */,
+				F758F2471E5887B90059030C /* AddMenuLauncher.swift */,
+				F721CDF41E59357600DA0D3C /* SettingBlackView.swift */,
+			);
+			name = Reference;
+			sourceTree = "<group>";
+		};
 		F7D856D31E4B89B400D6DE35 = {
 			isa = PBXGroup;
 			children = (
@@ -78,6 +90,7 @@
 		F7D856DE1E4B89B400D6DE35 /* CustomizableCalculator */ = {
 			isa = PBXGroup;
 			children = (
+				F721CDF31E59344600DA0D3C /* Reference */,
 				F7D856FE1E4CC0C500D6DE35 /* Resource */,
 				F7D856F91E4CC02D00D6DE35 /* Model */,
 				F7D856FA1E4CC03400D6DE35 /* View */,
@@ -104,7 +117,6 @@
 			children = (
 				F758F23E1E5786060059030C /* MenuCell.swift */,
 				F72065DE1E50A34600376F13 /* MediaCell.swift */,
-				F721CDF11E5917C300DA0D3C /* SettingCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -114,7 +126,6 @@
 			children = (
 				F7D856E11E4B89B400D6DE35 /* CalculatorVC.swift */,
 				F7D857031E4D653B00D6DE35 /* StorageVC.swift */,
-				F758F2471E5887B90059030C /* AddMenuLauncher.swift */,
 				F74361E01E53FF90007D41D1 /* ManagePageVC.swift */,
 				F74361DE1E53C8BB007D41D1 /* PhotoVC.swift */,
 				F7C1896C1E55C3EF00F74743 /* VideoVC.swift */,
@@ -208,6 +219,7 @@
 			files = (
 				F7C1896D1E55C3EF00F74743 /* VideoVC.swift in Sources */,
 				F7D857041E4D653B00D6DE35 /* StorageVC.swift in Sources */,
+				F721CDF51E59357600DA0D3C /* SettingBlackView.swift in Sources */,
 				F7C1896B1E55C25E00F74743 /* TodoList.swift in Sources */,
 				F7D857001E4CFBE300D6DE35 /* Extensions.swift in Sources */,
 				F721CDF21E5917C300DA0D3C /* SettingCell.swift in Sources */,

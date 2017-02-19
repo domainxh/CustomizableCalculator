@@ -12,18 +12,20 @@ import AVFoundation
 class StorageVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     
     @IBOutlet weak var mainMenuConstraint: NSLayoutConstraint!
-    @IBOutlet weak var mainMenuTableView: UITableView!
     @IBOutlet weak var addMenuConstraint: NSLayoutConstraint!
+    @IBOutlet weak var mainMenuTableView: UITableView!
     @IBOutlet weak var addMenuTableView: UITableView!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var mainMenuView: UIView!
-    
-    let blackView = UIView()
+    @IBOutlet weak var addMenuView: UIView!
+    @IBOutlet weak var blackView: UIView!
     
     var isMainMenuShowing = false
     var isAddMenuShowing = false
     let addMenuItems = ["Camera", "Add photo"]
     let mainMenuItems = ["Photo", "Video", "Web", "Setting"]
+    
+    let cellHeight: CGFloat = 50
     
     let mediaPerRow: CGFloat = 2
     let cellGap = CGFloat(2)
@@ -38,6 +40,8 @@ class StorageVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
         super.viewDidLoad()
         
         title = titleName
+        
+//        addMenuView.frame.height = cellHeight * addMenuitems.count
         
         mainMenuTableView.delegate = self
         mainMenuTableView.dataSource = self
@@ -64,12 +68,6 @@ class StorageVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
         
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(true)
-        hideMainMenu()
-        hideAddMenu()
-    }
-    
     func handleSwipeGesture(gesture: UIGestureRecognizer) {
         if let swipeGesture = gesture as? UISwipeGestureRecognizer {
             switch swipeGesture.direction {
@@ -84,24 +82,51 @@ class StorageVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
     }
     
     @IBAction func addMenuTapped(_ sender: Any) {
-//        isAddMenuShowing ? hideAddMenu() : showAddMenu()
-//        hideMainMenu()
-
-        addMenuLauncher.showSettings()
+        if isAddMenuShowing {
+            hideAddMenu()
+            dismissBlackView()
+        } else if !isAddMenuShowing && isMainMenuShowing {
+            hideMainMenu()
+            showAddMenu()
+        } else {
+            showAddMenu()
+            animateBlackView()
+        }
     }
     
-    let blackView2 = UIView()
-    
-    lazy var addMenuLauncher: AddMenuLauncher = {
-        let launcher = AddMenuLauncher()
-        launcher.homeController = self
-        return launcher
-    }()
-    
-    
     @IBAction func mainMenuTapped(_ sender: Any) {
-        isMainMenuShowing ? hideMainMenu() : showMainMenu()
-        hideAddMenu()
+        if isMainMenuShowing {
+            hideMainMenu()
+            dismissBlackView()
+        } else if !isMainMenuShowing && isAddMenuShowing{
+            showMainMenu()
+            hideAddMenu()
+        } else {
+            showMainMenu()
+            animateBlackView()
+        }
+    }
+    
+    func animateBlackView() {
+        blackView.isHidden = false
+        blackView.backgroundColor = UIColor(white: 0, alpha: 0.5)
+        blackView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissBlackView)))
+        blackView.alpha = 0
+        
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+            
+            self.blackView.alpha = 1
+        })
+    }
+    
+    func dismissBlackView() {
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+            
+            self.blackView.isHidden = true
+            self.blackView.alpha = 0
+            self.hideAddMenu()
+            self.hideMainMenu()
+        })
     }
     
     func hideAddMenu() {
@@ -142,7 +167,6 @@ class StorageVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
             let cell = tableView.dequeueReusableCell(withIdentifier: "mainMenuCell") as! MenuCell
             cell.configCell(menuItems: mainMenuItems[indexPath.row])
             return cell
-            
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "addMenuCell") as! MenuCell
             cell.configCell(menuItems: addMenuItems[indexPath.row])
@@ -159,6 +183,9 @@ class StorageVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        hideMainMenu()
+        dismissBlackView()
+        
         let currentCell = tableView.cellForRow(at: indexPath) as! MenuCell
         let cellText = currentCell.menuLabel.text
         
@@ -170,21 +197,17 @@ class StorageVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
         } else if cellText == "Photo" {
             title = "Photo"
         }
-        hideMainMenu()
+
         DispatchQueue.main.async(execute: {
             self.collectionView.reloadData()
         })
-        
     }
 
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return cellHeight
+    }
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-        if isAddMenuShowing || isMainMenuShowing {
-            hideAddMenu()
-            hideMainMenu()
-            return
-        }
-        
         if let vc = storyboard?.instantiateViewController(withIdentifier: "managePageVC") as? ManagePageVC {
             vc.mediaType = title
             vc.currentIndex = indexPath.row

@@ -401,6 +401,10 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PG2-Q4-OCJ">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QPR-0b-4ib">
                                 <rect key="frame" x="-140" y="64" width="140" height="603"/>
                                 <subviews>
@@ -518,11 +522,15 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="PG2-Q4-OCJ" secondAttribute="trailing" id="3HN-6W-ZEh"/>
                             <constraint firstItem="0Q2-Bw-Nw2" firstAttribute="top" secondItem="b4P-1Q-aHN" secondAttribute="bottom" id="GVg-GX-MDo"/>
                             <constraint firstItem="OPP-1Y-bJ7" firstAttribute="top" secondItem="YR0-Wy-Rqx" secondAttribute="bottom" constant="-200" id="KR8-Qf-If9"/>
                             <constraint firstItem="b4P-1Q-aHN" firstAttribute="leading" secondItem="M7G-Le-cAP" secondAttribute="leadingMargin" constant="-16" id="NAP-dE-3JO"/>
+                            <constraint firstItem="0Q2-Bw-Nw2" firstAttribute="top" secondItem="PG2-Q4-OCJ" secondAttribute="bottom" id="TyG-ZR-rFO"/>
                             <constraint firstItem="QPR-0b-4ib" firstAttribute="top" secondItem="YR0-Wy-Rqx" secondAttribute="bottom" id="VFe-7F-cgr"/>
+                            <constraint firstItem="PG2-Q4-OCJ" firstAttribute="leading" secondItem="QPR-0b-4ib" secondAttribute="trailing" id="av6-1M-h8f"/>
                             <constraint firstItem="QPR-0b-4ib" firstAttribute="leading" secondItem="M7G-Le-cAP" secondAttribute="leading" constant="-140" id="dyl-Fk-CrX"/>
+                            <constraint firstItem="PG2-Q4-OCJ" firstAttribute="top" secondItem="YR0-Wy-Rqx" secondAttribute="bottom" id="eK7-kg-9eO"/>
                             <constraint firstAttribute="trailing" secondItem="OPP-1Y-bJ7" secondAttribute="trailing" id="ebT-X7-Ssz"/>
                             <constraint firstItem="0Q2-Bw-Nw2" firstAttribute="top" secondItem="QPR-0b-4ib" secondAttribute="bottom" id="ngx-O5-Hrw"/>
                             <constraint firstItem="b4P-1Q-aHN" firstAttribute="top" secondItem="YR0-Wy-Rqx" secondAttribute="bottom" id="xtg-RP-Iio"/>
@@ -546,6 +554,8 @@
                     <connections>
                         <outlet property="addMenuConstraint" destination="KR8-Qf-If9" id="wIZ-Yh-1lv"/>
                         <outlet property="addMenuTableView" destination="zRU-nS-SLk" id="gan-G5-SDg"/>
+                        <outlet property="addMenuView" destination="OPP-1Y-bJ7" id="hKY-vN-Chu"/>
+                        <outlet property="blackView" destination="PG2-Q4-OCJ" id="eN9-vI-a6j"/>
                         <outlet property="collectionView" destination="b4P-1Q-aHN" id="GKV-Hd-PA8"/>
                         <outlet property="mainMenuConstraint" destination="dyl-Fk-CrX" id="rZe-Mt-hLg"/>
                         <outlet property="mainMenuTableView" destination="u3q-oh-CfS" id="Jfp-08-oca"/>
