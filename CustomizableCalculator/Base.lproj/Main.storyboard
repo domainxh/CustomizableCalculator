@@ -509,7 +509,7 @@
                                         </prototypes>
                                     </tableView>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="160" id="Khf-np-BYG"/>
                                     <constraint firstItem="zRU-nS-SLk" firstAttribute="top" secondItem="OPP-1Y-bJ7" secondAttribute="top" id="P7W-UN-IGh"/>
@@ -552,12 +552,10 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="addMenuConstraint" destination="KR8-Qf-If9" id="wIZ-Yh-1lv"/>
                         <outlet property="addMenuTableView" destination="zRU-nS-SLk" id="gan-G5-SDg"/>
                         <outlet property="addMenuView" destination="OPP-1Y-bJ7" id="hKY-vN-Chu"/>
                         <outlet property="blackView" destination="PG2-Q4-OCJ" id="eN9-vI-a6j"/>
                         <outlet property="collectionView" destination="b4P-1Q-aHN" id="GKV-Hd-PA8"/>
-                        <outlet property="mainMenuConstraint" destination="dyl-Fk-CrX" id="rZe-Mt-hLg"/>
                         <outlet property="mainMenuTableView" destination="u3q-oh-CfS" id="Jfp-08-oca"/>
                         <outlet property="mainMenuView" destination="QPR-0b-4ib" id="DD2-nG-ag6"/>
                         <segue destination="SBN-wP-Gsj" kind="show" identifier="showPage" id="kqK-OJ-ReE"/>

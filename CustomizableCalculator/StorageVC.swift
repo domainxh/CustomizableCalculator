@@ -11,8 +11,6 @@ import AVFoundation
 
 class StorageVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     
-    @IBOutlet weak var mainMenuConstraint: NSLayoutConstraint!
-    @IBOutlet weak var addMenuConstraint: NSLayoutConstraint!
     @IBOutlet weak var mainMenuTableView: UITableView!
     @IBOutlet weak var addMenuTableView: UITableView!
     @IBOutlet weak var collectionView: UICollectionView!
@@ -41,8 +39,6 @@ class StorageVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
         
         title = titleName
         
-//        addMenuView.frame.height = cellHeight * addMenuitems.count
-        
         mainMenuTableView.delegate = self
         mainMenuTableView.dataSource = self
         
@@ -66,6 +62,9 @@ class StorageVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
         swipeLeft.direction = UISwipeGestureRecognizerDirection.left
         self.view.addGestureRecognizer(swipeLeft)
         
+        let swipeUp = UISwipeGestureRecognizer(target: self, action: #selector(self.handleSwipeGesture))
+        swipeUp.direction = UISwipeGestureRecognizerDirection.up
+        self.view.addGestureRecognizer(swipeUp)
     }
     
     func handleSwipeGesture(gesture: UIGestureRecognizer) {
@@ -73,8 +72,13 @@ class StorageVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
             switch swipeGesture.direction {
             case UISwipeGestureRecognizerDirection.right:
                 showMainMenu()
+                animateBlackView()
             case UISwipeGestureRecognizerDirection.left:
                 hideMainMenu()
+                dismissBlackView()
+            case UISwipeGestureRecognizerDirection.up:
+                hideAddMenu()
+                dismissBlackView()
             default:
                 break
             }
@@ -114,14 +118,12 @@ class StorageVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
         blackView.alpha = 0
         
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
-            
             self.blackView.alpha = 1
         })
     }
     
     func dismissBlackView() {
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
-            
             self.blackView.isHidden = true
             self.blackView.alpha = 0
             self.hideAddMenu()
@@ -129,37 +131,62 @@ class StorageVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
         })
     }
     
-    func hideAddMenu() {
-        if isAddMenuShowing {
-            toggleSlider(distance: -200, menuConstraint: addMenuConstraint)
-            isAddMenuShowing = !isAddMenuShowing
-        }
-    }
-    
     func showAddMenu() {
         if !isAddMenuShowing {
-            toggleSlider(distance: 0, menuConstraint: addMenuConstraint)
+            if let window = UIApplication.shared.keyWindow {
+                let x = collectionView.frame.width - addMenuView.frame.width
+                let yFinal = window.frame.height - collectionView.frame.height
+                let yInit = yFinal - addMenuView.frame.height
+                addMenuView.frame = CGRect(x: x, y: yInit, width: addMenuView.frame.width, height: addMenuView.frame.height)
+            
+                UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+                    self.addMenuView.frame = CGRect(x: x, y: yFinal, width: self.addMenuView.frame.width, height: self.addMenuView.frame.height)
+                })
+            }
             isAddMenuShowing = !isAddMenuShowing
         }
     }
     
-    func hideMainMenu() {
-        if isMainMenuShowing {
-            toggleSlider(distance: -140, menuConstraint: mainMenuConstraint)
-            isMainMenuShowing = !isMainMenuShowing
+    func hideAddMenu() {
+        if isAddMenuShowing {
+            if let window = UIApplication.shared.keyWindow {
+                let x = collectionView.frame.width - addMenuView.frame.width
+                let yInit = window.frame.height - collectionView.frame.height - addMenuView.frame.height
+                
+                UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+                    self.addMenuView.frame = CGRect(x: x, y: yInit, width: self.addMenuView.frame.width, height: self.addMenuView.frame.height)
+                })
+            }
+            isAddMenuShowing = !isAddMenuShowing
         }
     }
     
     func showMainMenu() {
         if !isMainMenuShowing {
-            toggleSlider(distance: 0, menuConstraint: mainMenuConstraint)
+            if let window = UIApplication.shared.keyWindow {
+                let y = window.frame.height - collectionView.frame.height
+                let xInit = mainMenuView.frame.width * -1
+                mainMenuView.frame = CGRect(x: xInit, y: y, width: mainMenuView.frame.width, height: mainMenuView.frame.height)
+                
+                UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+                    self.mainMenuView.frame = CGRect(x: 0, y: y, width: self.mainMenuView.frame.width, height: self.mainMenuView.frame.height)
+                })
+            }
             isMainMenuShowing = !isMainMenuShowing
         }
     }
     
-    func toggleSlider(distance: CGFloat, menuConstraint: NSLayoutConstraint) {
-        menuConstraint.constant = distance
-        UIView.animate(withDuration: 0.3, animations: { self.view.layoutIfNeeded() })
+    func hideMainMenu() {
+        if isMainMenuShowing {
+            if let window = UIApplication.shared.keyWindow {
+                let y = window.frame.height - collectionView.frame.height
+                let xInit = mainMenuView.frame.width * -1
+                UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+                    self.mainMenuView.frame = CGRect(x: xInit, y: y, width: self.mainMenuView.frame.width, height: self.mainMenuView.frame.height)
+                })
+            }
+            isMainMenuShowing = !isMainMenuShowing
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
