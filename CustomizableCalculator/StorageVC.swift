@@ -18,9 +18,11 @@ class StorageVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var mainMenuView: UIView!
     
+    let blackView = UIView()
+    
     var isMainMenuShowing = false
     var isAddMenuShowing = false
-    let addMenuItems = ["Camera", "Add file", "Add photo"]
+    let addMenuItems = ["Camera", "Add photo"]
     let mainMenuItems = ["Photo", "Video", "Web", "Setting"]
     
     let mediaPerRow: CGFloat = 2
@@ -82,10 +84,21 @@ class StorageVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
     }
     
     @IBAction func addMenuTapped(_ sender: Any) {
-        isAddMenuShowing ? hideAddMenu() : showAddMenu()
-        hideMainMenu()
-    }
+//        isAddMenuShowing ? hideAddMenu() : showAddMenu()
+//        hideMainMenu()
 
+        addMenuLauncher.showSettings()
+    }
+    
+    let blackView2 = UIView()
+    
+    lazy var addMenuLauncher: AddMenuLauncher = {
+        let launcher = AddMenuLauncher()
+        launcher.homeController = self
+        return launcher
+    }()
+    
+    
     @IBAction func mainMenuTapped(_ sender: Any) {
         isMainMenuShowing ? hideMainMenu() : showMainMenu()
         hideAddMenu()
@@ -158,7 +171,10 @@ class StorageVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
             title = "Photo"
         }
         hideMainMenu()
-        collectionView.reloadData()
+        DispatchQueue.main.async(execute: {
+            self.collectionView.reloadData()
+        })
+        
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

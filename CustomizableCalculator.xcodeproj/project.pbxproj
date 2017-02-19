@@ -8,10 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		F72065DF1E50A34600376F13 /* MediaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72065DE1E50A34600376F13 /* MediaCell.swift */; };
+		F721CDF21E5917C300DA0D3C /* SettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F721CDF11E5917C300DA0D3C /* SettingCell.swift */; };
 		F74361DF1E53C8BB007D41D1 /* PhotoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74361DE1E53C8BB007D41D1 /* PhotoVC.swift */; };
 		F74361E11E53FF90007D41D1 /* ManagePageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74361E01E53FF90007D41D1 /* ManagePageVC.swift */; };
 		F758F23F1E5786060059030C /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F758F23E1E5786060059030C /* MenuCell.swift */; };
 		F758F2411E5792820059030C /* StorageData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F758F2401E5792820059030C /* StorageData.swift */; };
+		F758F2481E5887B90059030C /* AddMenuLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = F758F2471E5887B90059030C /* AddMenuLauncher.swift */; };
 		F7C1896B1E55C25E00F74743 /* TodoList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C1896A1E55C25E00F74743 /* TodoList.swift */; };
 		F7C1896D1E55C3EF00F74743 /* VideoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C1896C1E55C3EF00F74743 /* VideoVC.swift */; };
 		F7D856E01E4B89B400D6DE35 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D856DF1E4B89B400D6DE35 /* AppDelegate.swift */; };
@@ -26,10 +28,12 @@
 
 /* Begin PBXFileReference section */
 		F72065DE1E50A34600376F13 /* MediaCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaCell.swift; sourceTree = "<group>"; };
+		F721CDF11E5917C300DA0D3C /* SettingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingCell.swift; sourceTree = "<group>"; };
 		F74361DE1E53C8BB007D41D1 /* PhotoVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoVC.swift; sourceTree = "<group>"; };
 		F74361E01E53FF90007D41D1 /* ManagePageVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagePageVC.swift; sourceTree = "<group>"; };
 		F758F23E1E5786060059030C /* MenuCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
 		F758F2401E5792820059030C /* StorageData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageData.swift; sourceTree = "<group>"; };
+		F758F2471E5887B90059030C /* AddMenuLauncher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddMenuLauncher.swift; sourceTree = "<group>"; };
 		F7C1896A1E55C25E00F74743 /* TodoList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoList.swift; sourceTree = "<group>"; };
 		F7C1896C1E55C3EF00F74743 /* VideoVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoVC.swift; sourceTree = "<group>"; };
 		F7D856DC1E4B89B400D6DE35 /* CustomizableCalculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CustomizableCalculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -100,6 +104,7 @@
 			children = (
 				F758F23E1E5786060059030C /* MenuCell.swift */,
 				F72065DE1E50A34600376F13 /* MediaCell.swift */,
+				F721CDF11E5917C300DA0D3C /* SettingCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -109,6 +114,7 @@
 			children = (
 				F7D856E11E4B89B400D6DE35 /* CalculatorVC.swift */,
 				F7D857031E4D653B00D6DE35 /* StorageVC.swift */,
+				F758F2471E5887B90059030C /* AddMenuLauncher.swift */,
 				F74361E01E53FF90007D41D1 /* ManagePageVC.swift */,
 				F74361DE1E53C8BB007D41D1 /* PhotoVC.swift */,
 				F7C1896C1E55C3EF00F74743 /* VideoVC.swift */,
@@ -204,10 +210,12 @@
 				F7D857041E4D653B00D6DE35 /* StorageVC.swift in Sources */,
 				F7C1896B1E55C25E00F74743 /* TodoList.swift in Sources */,
 				F7D857001E4CFBE300D6DE35 /* Extensions.swift in Sources */,
+				F721CDF21E5917C300DA0D3C /* SettingCell.swift in Sources */,
 				F7D856E21E4B89B400D6DE35 /* CalculatorVC.swift in Sources */,
 				F74361DF1E53C8BB007D41D1 /* PhotoVC.swift in Sources */,
 				F7D856E01E4B89B400D6DE35 /* AppDelegate.swift in Sources */,
 				F758F2411E5792820059030C /* StorageData.swift in Sources */,
+				F758F2481E5887B90059030C /* AddMenuLauncher.swift in Sources */,
 				F74361E11E53FF90007D41D1 /* ManagePageVC.swift in Sources */,
 				F758F23F1E5786060059030C /* MenuCell.swift in Sources */,
 				F7D856E81E4B89B400D6DE35 /* CustomizableCalculator.xcdatamodeld in Sources */,

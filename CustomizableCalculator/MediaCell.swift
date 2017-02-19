@@ -51,3 +51,4 @@ class MediaCell: UICollectionViewCell {
     }
     
 }
+
