@@ -17,6 +17,9 @@ class StorageVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
     @IBOutlet weak var mainMenuView: UIView!
     @IBOutlet weak var addMenuView: UIView!
     @IBOutlet weak var blackView: UIView!
+    @IBOutlet weak var addMenuHeight: NSLayoutConstraint!
+    @IBOutlet weak var addMenuHeightConstraint: NSLayoutConstraint!
+    
     
     var isMainMenuShowing = false
     var isAddMenuShowing = false
@@ -36,6 +39,9 @@ class StorageVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        addMenuHeight.constant = cellHeight * CGFloat(addMenuItems.count)
+        addMenuHeightConstraint.constant = cellHeight * CGFloat(addMenuItems.count) * CGFloat(-1)
         
         title = titleName
         
@@ -72,13 +78,13 @@ class StorageVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
             switch swipeGesture.direction {
             case UISwipeGestureRecognizerDirection.right:
                 showMainMenu()
-                animateBlackView()
+                showBlackView()
             case UISwipeGestureRecognizerDirection.left:
                 hideMainMenu()
-                dismissBlackView()
+                hideBlackView()
             case UISwipeGestureRecognizerDirection.up:
                 hideAddMenu()
-                dismissBlackView()
+                hideBlackView()
             default:
                 break
             }
@@ -88,33 +94,33 @@ class StorageVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
     @IBAction func addMenuTapped(_ sender: Any) {
         if isAddMenuShowing {
             hideAddMenu()
-            dismissBlackView()
+            hideBlackView()
         } else if !isAddMenuShowing && isMainMenuShowing {
             hideMainMenu()
             showAddMenu()
         } else {
             showAddMenu()
-            animateBlackView()
+            showBlackView()
         }
     }
     
     @IBAction func mainMenuTapped(_ sender: Any) {
         if isMainMenuShowing {
             hideMainMenu()
-            dismissBlackView()
+            hideBlackView()
         } else if !isMainMenuShowing && isAddMenuShowing{
             showMainMenu()
             hideAddMenu()
         } else {
             showMainMenu()
-            animateBlackView()
+            showBlackView()
         }
     }
     
-    func animateBlackView() {
+    func showBlackView() {
         blackView.isHidden = false
         blackView.backgroundColor = UIColor(white: 0, alpha: 0.5)
-        blackView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissBlackView)))
+        blackView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(hideBlackView)))
         blackView.alpha = 0
         
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
@@ -122,7 +128,7 @@ class StorageVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
         })
     }
     
-    func dismissBlackView() {
+    func hideBlackView() {
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
             self.blackView.isHidden = true
             self.blackView.alpha = 0
@@ -211,7 +217,7 @@ class StorageVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         hideMainMenu()
-        dismissBlackView()
+        hideBlackView()
         
         let currentCell = tableView.cellForRow(at: indexPath) as! MenuCell
         let cellText = currentCell.menuLabel.text

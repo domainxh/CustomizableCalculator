@@ -810,11 +810,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CustomizableCalculator/StorageVC.swift"
-            timestampString = "509174024.701421"
+            timestampString = "509201651.709247"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "325"
-            endingLineNumber = "325">
+            startingLineNumber = "331"
+            endingLineNumber = "331">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -824,12 +824,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CustomizableCalculator/StorageVC.swift"
-            timestampString = "509174024.701421"
+            timestampString = "509201651.709247"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "131"
-            endingLineNumber = "131"
-            landmarkName = "dismissBlackView()"
+            startingLineNumber = "137"
+            endingLineNumber = "137"
+            landmarkName = "hideBlackView()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -840,11 +840,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CustomizableCalculator/StorageVC.swift"
-            timestampString = "509174024.701421"
+            timestampString = "509201651.709247"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "146"
-            endingLineNumber = "146"
+            startingLineNumber = "152"
+            endingLineNumber = "152"
             landmarkName = "showAddMenu()"
             landmarkType = "7">
          </BreakpointContent>
@@ -856,11 +856,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CustomizableCalculator/StorageVC.swift"
-            timestampString = "509174024.701421"
+            timestampString = "509201651.709247"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "160"
-            endingLineNumber = "160"
+            startingLineNumber = "166"
+            endingLineNumber = "166"
             landmarkName = "hideAddMenu()"
             landmarkType = "7">
          </BreakpointContent>

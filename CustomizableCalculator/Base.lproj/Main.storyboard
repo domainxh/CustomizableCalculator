@@ -552,6 +552,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="addMenuHeight" destination="ov1-yf-2Fm" id="9bI-HZ-jQk"/>
+                        <outlet property="addMenuHeightConstraint" destination="KR8-Qf-If9" id="x5I-Ez-8ak"/>
                         <outlet property="addMenuTableView" destination="zRU-nS-SLk" id="gan-G5-SDg"/>
                         <outlet property="addMenuView" destination="OPP-1Y-bJ7" id="hKY-vN-Chu"/>
                         <outlet property="blackView" destination="PG2-Q4-OCJ" id="eN9-vI-a6j"/>
